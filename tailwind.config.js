@@ -5,7 +5,11 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'spotifyGreen': { DEFAULT: "#1DB954" },
+      }
+    }
   },
   plugins: [],
 }
