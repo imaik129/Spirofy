@@ -9,7 +9,7 @@ import { audioFeaturesState } from '../atoms/playlistAtom';
 
 import useSpotify from '../hooks/useSpotify';
 
-import {MdDownload} from "react-icons/Md";
+// import {MdDownload} from "react-icons/Md";
 
 const Sketch = dynamic(import("react-p5"), {
   loading: () => <></>,
@@ -432,7 +432,8 @@ export const Spirograph = () => {
     </button> 
 
     <button className="outline-10 hover:bg-blue-700 text-[20px] text-white font-bold py-2 px-4 rounded" onClick={() => setColorChangeClicked(true)}>  
-      <MdDownload/> 
+      {/* <MdDownload/>  */}
+      download
     </button> 
 
 
