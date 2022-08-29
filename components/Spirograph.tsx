@@ -22,28 +22,32 @@ export const Spirograph = () => {
   // pg.ellipse(random(pg.width), random(pg.height), 100, 100);
 
   const [currValue, setCurrValue] = useState(0)
-  const [avgFeatures, setAvgFeatures] = useState([])
+  const [avgFeatures, setAvgFeatures]: any[] = useState([])
   const[clicked, setClicked] = useState(false)
 
   const[colorChangeClicked, setColorChangeClicked]= useState(false)
-  const audioFeatures = useRecoilValue(audioFeaturesState);
+  const audioFeatures:{ [key: string]: any } = useRecoilValue(audioFeaturesState);
   
 
-  const playlistLength = audioFeatures.audio_features?.length;
+  const playlistLength = audioFeatures['audio_features']?.length;
 
-  function findAverage (featureName){
+ 
+
+  function findAverage (featureName: string){
     const feature = featureName
     let featureAvg = 0; 
 
     for (var i = 0; i <  playlistLength; i++) {
-      if (audioFeatures?.audio_features?.[i] == null){
+      if (audioFeatures['audio_features']?.[i] == null){
         console.log("IN IF CASE AUDIO FEATUREs")
         featureAvg += 0
       }
       else{
+      
+        // featureAvg += audioFeatures?.audio_features?.[i][feature]
         featureAvg += audioFeatures?.audio_features?.[i][feature]
       }
-
+      // const temp = someObj[field as keyof ObjectType]
     }
 
     featureAvg = featureAvg/ playlistLength 
@@ -69,7 +73,7 @@ export const Spirograph = () => {
   const preload = (p5: p5Types) => {};
  
 
-  let pg; 
+  let pg: any; 
 
   // let colorArray = ["#ff7f50", "#9932cc", "#708090","#dc143c", "#ff7f50"]
   const setup = (p5: p5Types, canvasParentRef: Element)=> {
@@ -172,16 +176,7 @@ export const Spirograph = () => {
   // console.log("LIST INDEX", list_idx)
   // console.log("calculation", (avg_valence -0.5)*100)
 
-  function findR1(avg_value){
-    
-  }
 
-
-  function keyTyped(p5: p5Type) {
-
-      p5.saveCanvas('photo', 'png');
-   
-  }
   const draw = (p5: p5Types) => {
 
     let a_tempo = avgFeatures[0];
@@ -212,8 +207,8 @@ export const Spirograph = () => {
     
     let a1 =1;
     let a2 =2;
-    let prevX;
-    let prevY;
+    let prevX = 0;
+    let prevY = 0;
     
 
     p5.translate(p5.windowWidth/2, p5.windowHeight/2)
@@ -393,6 +388,7 @@ export const Spirograph = () => {
       p5.background(1);
       // p5.save("pg.png"); 
       // setCurrValue(avg_tempo);
+      
       setAvgFeatures([avg_tempo, avg_danceability, avg_valence, avg_energy, playlistLength, avg_loudness])
       p5.redraw();
       setClicked(false);
@@ -429,13 +425,13 @@ export const Spirograph = () => {
     
     <div> 
 
-    <div class= "fixed top-14">
+    <div className= "fixed top-14">
 
-    <button class ="flex bg-blue-500 hover:bg-blue-700 text-[20px] text-white font-bold py-2 px-4 rounded" onClick={() => setClickStatus()}>  
+    <button className ="flex bg-blue-500 hover:bg-blue-700 text-[20px] text-white font-bold py-2 px-4 rounded" onClick={() => setClickStatus()}>  
       Visualize / Change Color
     </button> 
 
-    <button class ="outline-10 hover:bg-blue-700 text-[20px] text-white font-bold py-2 px-4 rounded" onClick={() => setColorChangeClicked(true)}>  
+    <button className="outline-10 hover:bg-blue-700 text-[20px] text-white font-bold py-2 px-4 rounded" onClick={() => setColorChangeClicked(true)}>  
       <MdDownload/> 
     </button> 
 
@@ -450,7 +446,7 @@ export const Spirograph = () => {
         windowResized={windowResized}
       />
 
-      <div class= "items-center font-serif text-2xl text-center text-stone-400 ">  
+      <div className = "items-center font-serif text-2xl text-center text-stone-400 ">  
           Spirofy 2022 v1
       </div> 
 

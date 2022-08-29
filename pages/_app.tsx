@@ -27,7 +27,11 @@ import '../styles/globals.css';
 import { RecoilRoot } from 'recoil';
 import Head from 'next/head';
 
-export default function App({Component, pageProps: {session, ...pageProps}}) {
+import { AppProps } from 'next/app'
+
+
+
+function App({Component, pageProps: {session, ...pageProps}}: any) {
   return (
     <SessionProvider session={session}>
       <RecoilRoot>
@@ -37,3 +41,7 @@ export default function App({Component, pageProps: {session, ...pageProps}}) {
     </SessionProvider>
   );
 }
+
+
+export default App;
+

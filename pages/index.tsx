@@ -4,8 +4,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 import  SelectionBar from '../components/SelectionBar';
-import TopNav from '../components/TopNav'
-import Dropdown from '../components/Dropdown'
+// import TopNav from '../components/TopNav'
+// import Dropdown from '../components/Dropdown'
 
 import {useSession, signIn, signOut, getSession} from 'next-auth/react';
 
@@ -14,6 +14,8 @@ import {useSession, signIn, signOut, getSession} from 'next-auth/react';
 export default function Home() {
   const { data: session, status } = useSession();
 
+
+  
   
   if (session) {
     return (
@@ -37,7 +39,7 @@ export default function Home() {
   );
 }
 
-export async function getServerSideProps(context){
+export async function getServerSideProps(context:any){
   const session = await getSession(context);
 
   return {
