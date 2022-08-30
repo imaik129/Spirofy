@@ -19,9 +19,6 @@ import { playlistState} from '../atoms/playlistAtom';
 import { audioFeaturesState } from '../atoms/playlistAtom';
 
 
-
-
-
 function SelectionBar() {
   //spotify API
   // <any[]>
@@ -186,7 +183,7 @@ function SelectionBar() {
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
       console.log("in use effect")
-      spotifyApi.getUserPlaylists().then((data: any) => {
+      spotifyApi.getUserPlaylists({ limit: 50}).then((data: any) => {
         setPlaylists(data.body.items);
         console.log(data.body.items);
       });
@@ -224,10 +221,6 @@ function SelectionBar() {
   //   });
   // }, [spotifyApi, playlistId]);
   
-  // if (allIDs.length == 0 || typeof allIDs[0] === 'undefined'){
-  //   setallIDs(['4V33aS5qju2ujbQt8JKi6P'])
-  // }
-
 let songIDs = allIDs;
 
 useEffect(() => {
@@ -247,25 +240,32 @@ console.log("CURRENT PLAYLIST", playlist.name)
 console.log("AUDIO FEATURES TEST BUG", audioFeatures)
 
 
+
   return (
 
     <div> 
-        <div> 
-          {/* <Songs/> */}
+        <div className = "flex flex-col space-y-1 ..."> 
+        {/* papyrus */}
+          <div className = "font-['Wingdings']  fixed top-0  text-[5em]  text-blue-300">
+            Spirofy
+          </div>
+      
+          <div>
+            <Spirograph/>
+          </div>
         </div>
-        <Spirograph/>
-      <div className="fixed top-0 w-72">
+      <div className="fixed top-20 pt-9 w-72 ">
         {/*   */}
         <Listbox value={selected}  onChange={setSelectedAndSetPlaylist}>
           <div className="relative mt-1">
-             <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+             <Listbox.Button className=" py-2 border-2 border-blue-500  relative w-full cursor-default rounded-lg bg-white  bg-opacity-80 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
                 <span className="block truncate inset-y-0 left-0 flex items-center">
                   <img
                     className="h-8 w-8 shadow-2xl left-0"
                     src={selected['images'][0]['url']}
                     alt=""
                   />
-                  <p className = "flex space-x-2">  
+                  <p className = "flex space-x-2 px-2 text-[20px]">  
                     {selected['name']}
                   </p> 
                 </span>
@@ -301,22 +301,21 @@ console.log("AUDIO FEATURES TEST BUG", audioFeatures)
                     {({ selected }) => (
                       <>
                         <span
-                            // onClick={() => setPlaylistID(playlist.id)}
                             className={`block truncate ${
                             selected ? 'font-medium' : 'font-normal'
                             
                           }`}
-                        >
+                        > 
+                        
                           {playlist['name']}
                           
-                          <span className="absolute inset-y-0 left-0 flex items-center">
-                                <img
+                          <span className="absolute inset-y-2 left-0 flex items-center">
+                          <img
                               className="h-8 w-58shadow-2xl"
                               src={playlist['images'][0]?.['url']}
                               alt="album image"
                           />
-                            {/* <img className = "" src = {playlist?images?.[0]?.url}
-                          alt = ""/> */}
+
                           </span>
 
                         </span>
@@ -341,7 +340,7 @@ console.log("AUDIO FEATURES TEST BUG", audioFeatures)
         </Listbox>
       </div>
     <div className = "fixed bot-30 text-white">  
-      Spriofy 2022 v1
+     
     {/* {playlists.map((playlist) => (
       <p
         key={playlist.id}
