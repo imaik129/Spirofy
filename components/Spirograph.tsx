@@ -94,7 +94,7 @@ export const Spirograph = () => {
 
     for (var i = 0; i <  playlistLength; i++) {
       if (audioFeatures['audio_features']?.[i] == null){
-        console.log("IN IF CASE AUDIO FEATUREs")
+        // console.log("IN IF CASE AUDIO FEATUREs")
         featureAvg += 0
       }
       else{
@@ -117,14 +117,14 @@ export const Spirograph = () => {
   const avg_duration = findAverage("duration");
 
 
-  console.log("avg_danceability: ", avg_danceability)
+  // console.log("avg_danceability: ", avg_danceability)
 
-  console.log("avg_tempo: ",  avg_tempo)
+  // console.log("avg_tempo: ",  avg_tempo)
 
-  console.log("avg_valence: ", avg_valence)
+  // console.log("avg_valence: ", avg_valence)
 
-  console.log("avg_energy: ", avg_energy)
-  console.log("avg_loudness: ", avg_loudness)
+  // console.log("avg_energy: ", avg_energy)
+  // console.log("avg_loudness: ", avg_loudness)
 
   const preload = (p5: p5Types) => {};
  
@@ -152,11 +152,11 @@ export const Spirograph = () => {
   function setBackgroundClickStatus(){
 
     if (backgroundColor == "#FFFFFF"){
-      console.log("BAckgrouns is white")
+      // console.log("BAckgrouns is white")
       backgroundColor = "#000000"
     }
     else{
-      console.log("BAckgrouns is black")
+      // console.log("BAckgrouns is black")
       backgroundColor = "#FFFFFF"
     }
     setChangedBackgroundClicked(true);
@@ -435,7 +435,7 @@ export const Spirograph = () => {
       
     }
     if(changeBackgroundClicked){
-      console.log("SET IS TRUE")
+      // console.log("SET IS TRUE")
       p5.background(backgroundColor);
 
       p5.redraw();
@@ -443,7 +443,7 @@ export const Spirograph = () => {
     }
 
     if (clicked){
-      console.log("IS CLICKED")
+      // console.log("IS CLICKED")
       p5.background(backgroundColor);
 
       setAvgFeatures([avg_tempo, avg_danceability, avg_valence, avg_energy, playlistLength, avg_loudness])

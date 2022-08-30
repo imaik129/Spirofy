@@ -70,23 +70,23 @@ export default function Home() {
 
     <div className="flex justify-center  "> 
     
-      <h1 className = " pt-2000 flex text-[7vw]  pt-20 text-center text-black font-['Courier_New']  font-light" >     <img className = "flex flex-col mt-40  w-1000 h-100" src={'../bar/bar1.png'} alt="" /></h1> 
+      <h1 className = " pt-2000 flex text-[7vw]  pt-20 text-center text-black font-['Courier_New']  font-light" >     <img className = "flex flex-col   w-1000 h-100" src={'../bar/bar1.png'} alt="" /></h1> 
     </div>
 
     <div className="flex justify-center "> 
-      <h3 className = "flex text-[2vw] mt-10 pd-20 mb-10 text-center text-black font-['Roboto']  font-light">
+      <h3 className = "flex text-4xl mt-10 pd-20 mb-10 text-center text-black font-['Roboto']  font-light">
          Generate Complex Graphs To Visualize Your Spotify Playlist!</h3> 
     </div>
 
     <div className="flex justify-center  "> 
-      <p className = "flex text-[40px]  mb-20 text-center text-sky-900 font-['Lato'] font-extralight"> 
+      <p className = "flex text-base  mb-20 text-center text-sky-900 font-['Lato'] font-extralight"> 
       The graph's shape, angles, frame-rate, strokes, thickness, size, disparity, and patterns all correspond to your spotify playlist data <br/>  including but not limited to the playlist's duration, danceability, valence, tempo, length, and loudness. See what your playlist  <br/> looks like as a mathematical pattern, and customize by changing the color of the background and the graph!</p>
     </div>
           
     <div className="flex justify-center mb-20"> 
 
-      <button className = "sticky transform hover:scale-110  bg-white bg-opacity-70 hover:bg-cyan-300 mt-20 outline outline-2 outline-black w-200 transition duration-500 justify-between h-full  text-black p-4 rounded-xl bg-gradient-to-rfrom-black to-black hover:from-spotifyGreen hover:to-blue-500"
-        onClick={() => signIn()}> <p className = "text-center font-thin px-20 text-[40px]"> Start Exploring </p></button>
+      <button className = "sticky transform hover:scale-110  bg-white bg-opacity-70 hover:bg-cyan-300 mt-0 outline outline-2 outline-black w-200 transition duration-500 justify-between h-full  text-black p-4 rounded-xl bg-gradient-to-rfrom-black to-black hover:from-spotifyGreen hover:to-blue-500"
+        onClick={() => signIn()}> <p className = "text-center font-thin px-20 text-2xl"> Start Exploring </p></button>
       </div> 
    
 
