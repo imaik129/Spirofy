@@ -17,9 +17,9 @@ import Popup from 'reactjs-popup';
 
 import 'reactjs-popup/dist/index.css';
 
-import { MdTransform } from 'react-icons/Md';
-import {RiInformationLine} from 'react-icons/Ri';
-import {FiLogOut} from 'react-icons/Fi';
+import { MdTransform } from 'react-icons/md';
+import {RiInformationLine} from 'react-icons/ri';
+import {FiLogOut} from 'react-icons/fi';
 
 // import {RiInformationLine} from "@react-icons/all-files/Ri/RiInformationLine";
   
