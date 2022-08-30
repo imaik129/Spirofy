@@ -16,17 +16,17 @@ import React from 'react';
 import Popup from 'reactjs-popup';
 
 import 'reactjs-popup/dist/index.css';
+
+import { MdTransform } from 'react-icons/Md';
+import {RiInformationLine} from 'react-icons/Ri';
+import {FiLogOut} from 'react-icons/Fi';
+
+// import {RiInformationLine} from "@react-icons/all-files/Ri/RiInformationLine";
   
-import {MdTransform } from "@react-icons/all-files/Md/MdTransform";
-
-// import { MdTransform } from 'react-icons/Md';
-// import {RiInformationLine} from 'react-icons/Ri';
-// import {FiLogOut} from 'react-icons/Fi';
-
-import {RiInformationLine} from "@react-icons/all-files/Ri/RiInformationLine";
+// import {MdTransform } from "@react-icons/all-files/Md/MdTransform";
 
 
-import {FiLogOut} from "@react-icons/all-files/Fi/FiLogOut";
+// import {FiLogOut} from "@react-icons/all-files/Fi/FiLogOut";
 
 
 
