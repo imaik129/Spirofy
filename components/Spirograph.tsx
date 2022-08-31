@@ -588,7 +588,7 @@ export const Spirograph = () => {
         <hr/> - Length: The number of songs in a playlist. <br/>  
         - Danceability: A measurement of how danceable the song is derived through a combination of values such as energy, rhythm and other relevant song characteristics. <br/> 
         - Duration: The average length of a song in a playlist. 
-        <br/> - Loudness: A measurement of the loudness of the playlist. Louder => more energetic.  
+        <br/> - Loudness: A measurement of the loudness of the playlist. Louder == more energetic.  
          <br/>- Valence: A value between 0.0 and 1.0. A higher valence corresponds to emotions such as happy and excited, while a lower valence corresponds to feelings of sadness and depression. 
          <br/>- Energy: A measurement of how intense and active the songs in the playlist are on average.
         <br/>- Tempo: Measured in BPM (Beats Per Minute). Tempo represents the average pace of a playlist.</div>
