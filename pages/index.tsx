@@ -64,10 +64,10 @@ export default function Home() {
     <div className="flex-col justify-center bg-white ">
 
 
-    <Head>
+    {/* <Head>
     <title>Spirofy: Playlist Visualizer</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+      </Head> */}
 
     <div className="flex justify-center  "> 
     
