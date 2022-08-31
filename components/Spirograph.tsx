@@ -351,9 +351,10 @@ export const Spirograph = () => {
         var x2 =x1 +r2 * Math.cos(a2)
         var y2 = y1 +r2 *Math.sin(a2)
         if(x==0 && i ==0){
-          p5.stroke(0)
-          p5.strokeWeight(1);
+          p5.stroke(50, 0)
+          p5.strokeWeight(0);
         }
+        p5.strokeWeight(1);
         p5.line(prevX, prevY, x2, y2)
         prevX =x2  
         prevY = y2
