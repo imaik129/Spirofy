@@ -209,20 +209,13 @@ function SelectionBar() {
 
     if (spotifyApi.getAccessToken()) {
       // console.log("in use effect")
-      let tempPlaylists = [];
+      // let tempPlaylists = [];
       spotifyApi.getUserPlaylists({ limit: 50 ,offset:0}).then((data: any) => {
+        
         // setPlaylistOne(data.body.items)
         setPlaylists(data.body.items);
         // console.log(data.body.items);
       });
-
-      // spotifyApi.getUserPlaylists({ limit: 50 ,offset:51}).then((data: any) => {
-      //   console.log("IN NEWLY CREATED METHod");
-      //   setPlaylistTwo(data.body.items);
-      //   // setPlaylists(playlists => [playlists, ...data.body.items])
-
-      //   // console.log(data.body.items);
-      // });
 
       // setPlaylists([playlistOne])
       // setPlaylists([...playlistOne, ...playlistTwo]);
@@ -249,41 +242,6 @@ function SelectionBar() {
       // setPlaylists([...playlistOne, ...playlistTwo, ...playlistThree, ...playlistFour, ...playlistFive]);
       // setPlaylists(playlistOne, playlistTwo)
     }
-
-
-    // if (spotifyApi.getAccessToken()) {
-    //   // console.log("in use effect")
- 
-    //   spotifyApi.getUserPlaylists({ limit: 50 ,offset:100}).then((data: any) => {
-    //     console.log("IN NEWLY CREATED METHod");
-    //     setPlaylists(playlists => [...playlists, ...data.body.items])
-
-    //     // console.log(data.body.items);
-    //   });
-    // }
-    // if (spotifyApi.getAccessToken()) {
-    //   // console.log("in use effect")
- 
-    //   spotifyApi.getUserPlaylists({ limit: 50 ,offset:150}).then((data: any) => {
-    //     console.log("IN NEWLY CREATED METHod");
-    //     setPlaylists(playlists => [...playlists, ...data.body.items])
-
-    //     // console.log(data.body.items);
-    //   });
-      
-    // }
-
-    // if (spotifyApi.getAccessToken()) {
-    //   // console.log("in use effect")
- 
-    //   spotifyApi.getUserPlaylists({ limit: 50 ,offset:200}).then((data: any) => {
-
-    //     setPlaylists(playlists => [...playlists, ...data.body.items])
-
-    //     // console.log(data.body.items);
-    //   });
-      
-    // }
     else{
       console.log("no access token")
     }
@@ -293,21 +251,51 @@ function SelectionBar() {
     
   }, [session, spotifyApi]);
   
-  // useEffect(() => {
-  //   if (spotifyApi.getAccessToken()) {
-  //     // console.log("in use effect")
- 
-  //     spotifyApi.getUserPlaylists({ limit: 50 ,offset:100}).then((data: any) => {
-  //       console.log("IN NEWLY CREATED METHod");
-  //       setPlaylists(playlists => [...playlists, data.body.items])
 
-  //       // console.log(data.body.items);
-  //     });
-  //   }
-  //   else{
-  //     console.log("no access token")
-  //   }
-  // }, [session, spotifyApi]);
+  useEffect(() => {
+    if (spotifyApi.getAccessToken()) {
+      // console.log("in use effect")
+ 
+      spotifyApi.getUserPlaylists({ limit: 50 ,offset:51}).then((data: any) => {
+        setPlaylistTwo(data.body.items);
+        // console.log(data.body.items);
+      });
+    }
+    else{
+      console.log("no access token")
+    }
+  }, [session, spotifyApi]);
+  
+  
+  useEffect(() => {
+    if (spotifyApi.getAccessToken()) {
+      // console.log("in use effect")
+ 
+      spotifyApi.getUserPlaylists({ limit: 50 ,offset:154}).then((data: any) => {
+        setPlaylistThree(data.body.items);
+        // console.log(data.body.items);
+      });
+    }
+    else{
+      console.log("no access token")
+    }
+  }, [session, spotifyApi]);
+  
+
+  
+  useEffect(() => {
+    if (spotifyApi.getAccessToken()) {
+      // console.log("in use effect")
+ 
+      spotifyApi.getUserPlaylists({ limit: 50 ,offset:205}).then((data: any) => {
+        setPlaylistFour(data.body.items);
+        // console.log(data.body.items);
+      });
+    }
+    else{
+      console.log("no access token")
+    }
+  }, [session, spotifyApi]);
   
   
 
@@ -404,7 +392,8 @@ useEffect(() => {
             >
             
             <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                {playlists.map((playlist) => (
+                
+                {playlists.concat(playlistTwo, playlistThree, playlistFour).map((playlist) => (
                   <Listbox.Option
                     key={playlist['id']}
                     // onChange={() => setPlaylistID(playlist.id)}
