@@ -65,7 +65,7 @@ export default function Home() {
     
     <Head>
         <title>Spirofy: Playlist Visualizer</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="viewport" content="initial-scale=0.3, width=device-width" />
       </Head>
 
     <div className="flex justify-center  "> 

@@ -4,12 +4,12 @@ import p5Types from "p5";
 import { playlistState, playlistIdState} from '../atoms/playlistAtom';
 import {useRecoilState, useRecoilValue} from "recoil";
 import { useEffect, useState } from 'react';
-import { songIdState } from '../atoms/playlistAtom';
+// import { songIdState } from '../atoms/playlistAtom';
 import { audioFeaturesState } from '../atoms/playlistAtom';
 
-import useSpotify from '../hooks/useSpotify';
+// import useSpotify from '../hooks/useSpotify';
 
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+// import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { signOut, useSession } from 'next-auth/react';
 
 import React from 'react';
@@ -22,7 +22,7 @@ import {RiInformationLine} from 'react-icons/ri';
 import {FiLogOut} from 'react-icons/fi';
 import {VscGraphLine} from 'react-icons/vsc';
 import{BsFillImageFill,BsCardImage} from 'react-icons/bs';
-import {FaExchangeAlt} from 'react-icons/fa';
+// import {FaExchangeAlt} from 'react-icons/fa';
 import { Line, Bar} from "react-chartjs-2";
 import {CategoryScale} from 'chart.js'; 
 Chart.register(CategoryScale);
@@ -428,10 +428,8 @@ export const Spirograph = () => {
     <div className="flex"> 
     <button className="bg-slate-600 bg-opacity-90 after:outline-10 hover:bg-blue-700 text-2xl text-white font-bold py-2 px-4 rounded border-2 border-blue-500 " onClick={() =>setBackgroundClickStatus() }>  
       {/* Change Bg. Color */}
-      <p> {changeBackgroundIcon ? <div> <BsCardImage className = "text-white text-center text-3xl mx-5 "/> </div>:<div> <BsFillImageFill className = "text-white text-center text-3xl mx-5 "/>  </div> } </p>
-      {/* <BsFillImageFill/>
-      <BsCardImage/>
-      <FaExchangeAlt/> */}
+      <p> {changeBackgroundIcon ? <BsCardImage className = "text-white text-center text-3xl mx-5 "/> : <BsFillImageFill className = "text-white text-center text-3xl mx-5 "/>  } </p>
+
     </button> 
     </div>
     <div className="flex " >
@@ -443,24 +441,39 @@ export const Spirograph = () => {
       > 
 
       <br/> 
-      <h1 className = "font-['Verdana'] font-medium text-white text-[40px] ml-2"> Spirofy.com: Information </h1>
+      <h1 className = "font-['Verdana'] font-medium text-white text-3xl ml-2"> Spirofy.com: About </h1>
         <hr/>
         <br/>
-        {/* <div className ="text-blue-800"> */}
-        <div className = "text-[25px] ml-2 flex text-white">1. Click <p className = "text-blue-800">  "Visualize/Change_Color"  </p> to change the color of the spirograph/ to spirofy new playlist </div>
-        <br/>
-        {/* <p className = "text-purple-700"> */}
-        <div className = "text-[25px] ml-2 flex text-white">2. Click <BsCardImage className = "mt-2 mx-5"/> to <p className = "mx-2 text-purple-700"> change the background </p> screen [white, black] </div>
-        <br/>
-        {/* <p className = "text-rose-700"> */}
-        <div className = "text-[25px] ml-2 flex text-white">3. Click <MdDownload className = "mt-2 mx-5"/>  to <p className = "mx-2 text-rose-600"> download </p> spirograph as a png file to use as your playlist cover! </div>
-        <br/>
-        <div className = "text-[25px] ml-2 flex text-white">4. Adjust screen size with "command +/-". </div>
-        <br/>
-        <div className = "text-[25px] ml-2 text-white">Spirofy uses avg. tempo, duration, valence, danceability, loudness, and energy data to visualize your playlists as mathematical forms known as hypotrochoids and epitrochoids. </div>
-        <hr/>
-        <br/> 
 
+        <div className = ""> 
+          {/* <div className ="text-blue-800"> */}
+          <div className = "text-sm ml-2 flex text-white">1. Click  "Visualize/Change_Color" to change the color of the spirograph/ to spirofy new playlist </div>
+          <br/>
+          {/* <p className = "text-purple-700"> */}
+          <div className = "text-sm ml-2 flex text-white">2. Click Background Icon to change the background color of the screen [white, black] </div>
+          <br/>
+          {/* <p className = "text-rose-700"> */}
+          <div className = "text-sm ml-2 flex text-white">3. Click the download button to download spirograph as a png file! (e.g. use as playlist cover, share with friends!) </div>
+          <br/>
+          <div className = "text-sm ml-2 flex text-white">4. Adjust screen size with "command +/-". </div>
+          <br/>
+          <div className = "text-sm ml-2 text-white">Spirofy uses avg. tempo, duration, valence, danceability, loudness, and energy data to visualize your playlists as mathematical forms known as hypotrochoids and epitrochoids. </div>
+          <hr/>
+          <br/> 
+        </div> 
+        {/* <div className = ""> 
+          <div className = "text-sm ml-2 flex text-white">1. Click <p className = "text-blue-800">  "Visualize/Change_Color"  </p> to change the color of the spirograph/ to spirofy new playlist </div>
+          <br/>
+          <div className = "text-sm ml-2 flex text-white">2. Click <BsCardImage className = "mt-2 mx-5"/> to <p className = "mx-2 text-purple-700"> change the background </p> screen [white, black] </div>
+          <br/>
+          <div className = "text-sm ml-2 flex text-white">3. Click <MdDownload className = "mt-2 mx-5"/>  to <p className = "mx-2 text-rose-600"> download </p> spirograph as a png file to use as your playlist cover! </div>
+          <br/>
+          <div className = "text-sm ml-2 flex text-white">4. Adjust screen size with "command +/-". </div>
+          <br/>
+          <div className = "text-sm ml-2 text-white">Spirofy uses avg. tempo, duration, valence, danceability, loudness, and energy data to visualize your playlists as mathematical forms known as hypotrochoids and epitrochoids. </div>
+          <hr/>
+          <br/> 
+        </div>  */}
       </Popup>
 
       <Popup className = "popupGraph text-white text-2xl "trigger={<button className="bg-slate-600 bg-opacity-90 after:outline-10 hover:bg-blue-700 text-[20px] text-white font-bold py-2 px-5 ml-1 rounded border-2 border-blue-500 " >  
@@ -470,13 +483,13 @@ export const Spirograph = () => {
       > 
 
       <br/> 
-      <h1 className = "font-['Verdana'] font-medium text-white text-[40px] ml-2"> Spirofy.com: Visualize your playlist</h1>
+      <h1 className = "font-['Verdana'] font-medium text-white text-3xl ml-2"> Spirofy.com: Visualize your playlist</h1>
       <br/> 
 
 
 
       <hr/>
-      <h3 className = "flex  font-['Verdana'] font-medium text-white text-[40px] ml-2 mt-5"> 
+      <h3 className = "flex  font-['Verdana'] font-medium text-white text-3xl ml-2 mt-5"> 
       <hr/>
       <img
         className="ml-5  mr-5 mb-5 flex h-15 w-20 shadow-2xl"
@@ -527,7 +540,7 @@ export const Spirograph = () => {
                   ticks: {
                     color: 'rgb(255,250,250, 0.9)',
                     font: {
-                      size: 16,
+                      size: 10,
                     }
                   }
                 },
@@ -535,7 +548,7 @@ export const Spirograph = () => {
                   ticks: {
                     color: 'rgb(255,250,250, 0.9)',
                     font: {
-                      size: 16
+                      size: 10
                     }
                   }
                 }
@@ -582,7 +595,7 @@ export const Spirograph = () => {
                   ticks: {
                     color: 'rgb(255,250,250, 0.9)',
                     font: {
-                      size: 16,
+                      size: 10
                     }
                   }
                 },
@@ -590,7 +603,7 @@ export const Spirograph = () => {
                   ticks: {
                     color: 'rgb(255,250,250, 0.9)',
                     font: {
-                      size: 16
+                      size: 10
                     }
                   }
                 }
@@ -605,7 +618,7 @@ export const Spirograph = () => {
         <br/>
         <h4 className = "text-3xl font-['Verdana']  pb-4"  > Playlist Characteristic Description: </h4>  
       
-        <div className = "font-['Courier'] text-xl-0"> 
+        <div className = "characteristic font-['Courier'] text-xl-0"> 
         - Length: The number of songs in a playlist. <br/>  
         - Danceability: A measurement of how danceable the song is derived through a combination of values such as energy, rhythm and other relevant song characteristics. <br/> 
         - Duration: The average length of a song in a playlist. 

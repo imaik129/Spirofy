@@ -21,11 +21,11 @@ html, body{
    height:1500px;
  }
 
- .Popup{
+ /* .Popup{
    height:10px;
    background-color: black !important;
    overflow:auto;
-}
+} */
 /* .modal {
    font-size: 12px;
  }
@@ -64,6 +64,10 @@ html, body{
 .popup-content{
    margin: auto;
    background: rgb(0, 0, 0, 0.7) !important;
-   width: 50%;
+   width: 60% !important;
    padding: 5px;
+   height:80% !important;
+   background-color: black !important;
+   overflow:auto !important;
+   overflow-x: scroll;
  }
