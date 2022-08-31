@@ -5,7 +5,7 @@ import { signOut, useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import spotifyApi from '../lib/spotify';
 
-import Songs from "../components/songs"
+// import Songs from "../components/songs"
 import { playlistIdState } from '../atoms/playlistAtom';
 import {useRecoilState} from "recoil";
 import Spirograph from '../components/Spirograph'
@@ -182,10 +182,10 @@ function SelectionBar() {
 
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
-      console.log("in use effect")
+      // console.log("in use effect")
       spotifyApi.getUserPlaylists({ limit: 50}).then((data: any) => {
         setPlaylists(data.body.items);
-        console.log(data.body.items);
+        // console.log(data.body.items);
       });
     }
     else{
@@ -202,7 +202,7 @@ function SelectionBar() {
   useEffect(() => {
     spotifyApi.getPlaylist(playlistId).then((data: any) => {
       setPlaylist(data.body);
-      console.log(playlist);
+      // console.log(playlist);
       // setallIDs([(playlist.tracks?.items.map((track) => track.track.id))])
     });
   }, [spotifyApi, playlistId]);
@@ -235,9 +235,9 @@ useEffect(() => {
 }, [spotifyApi, songIDs]);
 
 
-console.log("CURRENT PLAYLIST", playlist.name)
+// console.log("CURRENT PLAYLIST", playlist.name)
 
-console.log("AUDIO FEATURES TEST BUG", audioFeatures)
+// console.log("AUDIO FEATURES TEST BUG", audioFeatures)
 
 
 

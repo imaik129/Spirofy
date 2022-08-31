@@ -1,7 +1,7 @@
 import {getProviders, signIn} from "next-auth/react";
 
 function Login({providers}: any) {
- console.log({providers})
+//  console.log({providers})
   return (
     <div className = "flex flex-col items-center bg-white min-h-screen w-full justify-center">
         <img className = "w-40 mb-5" src = '../../spotify.png' alt = ""/> 
