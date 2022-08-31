@@ -224,27 +224,28 @@ function SelectionBar() {
         // console.log(data.body.items);
       });
 
-      spotifyApi.getUserPlaylists({ limit: 50 ,offset:102}).then((data: any) => {
-        setPlaylistThree(data.body.items);
-        // setPlaylists(playlists => [playlists, ...data.body.items])
+      setPlaylists([...playlistOne, ...playlistTwo]);
+      // spotifyApi.getUserPlaylists({ limit: 50 ,offset:102}).then((data: any) => {
+      //   setPlaylistThree(data.body.items);
+      //   // setPlaylists(playlists => [playlists, ...data.body.items])
 
-        // console.log(data.body.items);
-      });
-      spotifyApi.getUserPlaylists({ limit: 50 ,offset:154}).then((data: any) => {
-        setPlaylistFour(data.body.items);
-        // setPlaylists(playlists => [playlists, ...data.body.items])
+      //   // console.log(data.body.items);
+      // });
+      // spotifyApi.getUserPlaylists({ limit: 50 ,offset:154}).then((data: any) => {
+      //   setPlaylistFour(data.body.items);
+      //   // setPlaylists(playlists => [playlists, ...data.body.items])
 
-        // console.log(data.body.items);
-      });
+      //   // console.log(data.body.items);
+      // });
 
-      spotifyApi.getUserPlaylists({ limit: 50 ,offset:205}).then((data: any) => {
-        setPlaylistFive(data.body.items);
-        // setPlaylists(playlists => [playlists, ...data.body.items])
+      // spotifyApi.getUserPlaylists({ limit: 50 ,offset:205}).then((data: any) => {
+      //   setPlaylistFive(data.body.items);
+      //   // setPlaylists(playlists => [playlists, ...data.body.items])
 
-        // console.log(data.body.items);
-      });
+      //   // console.log(data.body.items);
+      // });
 
-      setPlaylists([...playlistOne, ...playlistTwo, ...playlistThree, ...playlistFour, ...playlistFive]);
+      // setPlaylists([...playlistOne, ...playlistTwo, ...playlistThree, ...playlistFour, ...playlistFive]);
       // setPlaylists(playlistOne, playlistTwo)
     }
 
