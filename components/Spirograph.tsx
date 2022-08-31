@@ -20,11 +20,13 @@ import 'reactjs-popup/dist/index.css';
 import { MdTransform } from 'react-icons/md';
 import {RiInformationLine} from 'react-icons/ri';
 import {FiLogOut} from 'react-icons/fi';
-
-import { Line } from "react-chartjs-2";
+import {VscGraphLine} from 'react-icons/vsc';
+import{BsFillImageFill,BsCardImage} from 'react-icons/bs';
+import {FaExchangeAlt} from 'react-icons/fa';
+import { Line, Bar} from "react-chartjs-2";
 import {CategoryScale} from 'chart.js'; 
 Chart.register(CategoryScale);
-    import Chart from "chart.js/auto";
+import Chart from "chart.js/auto";
 
 // import {RiInformationLine} from "@react-icons/all-files/Ri/RiInformationLine";
   
@@ -35,7 +37,7 @@ Chart.register(CategoryScale);
 
 
 
-// import {MdDownload} from "react-icons/Md";
+import {MdDownload} from "react-icons/md";
 
 const Sketch = dynamic(import("react-p5"), {
   loading: () => <></>,
@@ -74,23 +76,23 @@ let colorArray = colorSelections[Math.floor((Math.random() * 21) + 1)]
 let backgroundColor = "#000000";
 
 export const Spirograph = () => {
-
-
-  // pg.ellipse(random(pg.width), random(pg.height), 100, 100);
-
-  const [currValue, setCurrValue] = useState(0)
   const [avgFeatures, setAvgFeatures]: any[] = useState([])
+  
   const[clicked, setClicked] = useState(false)
 
   const[SavePhotoClicked, setSavePhotoClicked]= useState(false)
+
   const audioFeatures:{ [key: string]: any } = useRecoilValue(audioFeaturesState);
   
+  const [playlist, setPlaylist] = useRecoilState(playlistState);
 
   const[changeBackgroundClicked, setChangedBackgroundClicked] = useState(false);
 
+ const[changeBackgroundIcon, setChangeBackgroundIcon] = useState(false);
+  
   const playlistLength = audioFeatures['audio_features']?.length;
 
-  const[popupClicked, setPopupClicked] = useState(false);
+  // const[popupClicked, setPopupClicked] = useState(false);
 
 
   function findAverage (featureName: string){
@@ -99,15 +101,11 @@ export const Spirograph = () => {
 
     for (var i = 0; i <  playlistLength; i++) {
       if (audioFeatures['audio_features']?.[i] == null){
-        // console.log("IN IF CASE AUDIO FEATUREs")
         featureAvg += 0
       }
       else{
-      
-        // featureAvg += audioFeatures?.audio_features?.[i][feature]
         featureAvg += audioFeatures?.audio_features?.[i][feature]
       }
-      // const temp = someObj[field as keyof ObjectType]
     }
 
     featureAvg = featureAvg/ playlistLength 
@@ -123,11 +121,8 @@ export const Spirograph = () => {
 
 
   // console.log("avg_danceability: ", avg_danceability)
-
   // console.log("avg_tempo: ",  avg_tempo)
-
   // console.log("avg_valence: ", avg_valence)
-
   // console.log("avg_energy: ", avg_energy)
   // console.log("avg_loudness: ", avg_loudness)
 
@@ -136,17 +131,10 @@ export const Spirograph = () => {
 
   let pg: any; 
 
-
-
-  // let colorArray = ["#ff7f50", "#9932cc", "#708090","#dc143c", "#ff7f50"]
   const setup = (p5: p5Types, canvasParentRef: Element)=> {
     p5.background(backgroundColor);
     p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
     pg = p5.createGraphics(800, 1000);
-   
-    // p5.colorMode(p5.HSB, p5.width, p5.height, 100);
-    // p5.createLoop({duration:15,gif:true})
-
   };
 
   function setClickStatus() {
@@ -155,28 +143,18 @@ export const Spirograph = () => {
   }
 
   function setBackgroundClickStatus(){
-
     if (backgroundColor == "#FFFFFF"){
-      // console.log("BAckgrouns is white")
       backgroundColor = "#000000"
+      setChangeBackgroundIcon(true);
     }
     else{
-      // console.log("BAckgrouns is black")
       backgroundColor = "#FFFFFF"
+      setChangeBackgroundIcon(false);
     }
     setChangedBackgroundClicked(true);
+
   }
 
-  // const onPopupClick = () => {
-  //   console.log("in function")
-  //   return(
-  //     <div className = "absolute text-white text-[100px]"> 
-  //     HELLO
-  //     <PopupComponent> </PopupComponent>
-  //     </div>
-  //   )
-
-  // }
 
   //blueish/purple
   //blueish/green
@@ -202,38 +180,11 @@ export const Spirograph = () => {
 
 
 
-  
-
-  
- 
-  let sf = 1; // scaleFactor
-  let x = 0; // pan X
-  let y = 0; // pan Y
-  
-  let mx, my; // mouse coords;
-  // let colorArray = ["#ff7f50", "#9932cc", "#708090","#dc143c", "#ff7f50"];
- 
-
 
   let color = "#000000"
 
-  // var fade = 0;
-  // var fadeSpeed =1;
+ 
   const draw = (p5: p5Types) => {
-    
-  // p5.tint(255, fade);
-  // if (fade < 255) {
-  //   fade = fade + fadeSpeed; 
-  // }
-  // mx = p5.mouseX;
-  //  my = p5.mouseY;
-
-    
-  // p5.translate(mx, my);
-  // p5.scale(sf);
-  // p5.translate(-mx, -my);
-  // p5.translate();
-
 
     let a_tempo = avgFeatures[0];
     let a_danceability = avgFeatures[1];
@@ -242,47 +193,30 @@ export const Spirograph = () => {
     let a_lenPlaylist = avgFeatures[4]
     let a_loudness = avgFeatures[5]
 
-
-    // console.log("AENEGY", a_energy);
-    
-    //greater higher r2, and lower r1, more sparse
-    // let r1 =500;
     let r1 = a_danceability*100
-    // let r2 = a_tempo;
 
-      
     let r2 = ((a_tempo-a_tempo/2)*10);  //keepv under 500 both can be high but have to be the same number
-    // ((a_tempo-a_tempo/2)*20)
-    
     let r2_4 = a_tempo*5
     let r2_3=  a_tempo*10
     let r2_2 = a_tempo -(a_energy *10)*100;  
     let r2_1= a_tempo 
 
-    
-    
     let a1 =1;
     let a2 =2;
     let prevX = 0;
     let prevY = 0;
-    
 
     p5.translate(p5.windowWidth/2, p5.windowHeight/2)
-    // p5.translate(800/2, 800/2)
     p5.stroke(255)
-    //0.1-2
+
 
     const avg_danceability_ele = Math.abs(avg_danceability*10); // Change to positive
     var decimal =  avg_danceability_ele - Math.floor(avg_danceability_ele)
     p5.strokeWeight(decimal)
 
-
-
     let numStrokes = a_tempo *5;
 
     const a1_val = a_valence *1000; 
-
-    // console.log("VJE CALENCE", a1_val )
     
     for (var x = 0; x < (numStrokes); x++){
       if(a_energy > 0.7){
@@ -407,33 +341,27 @@ export const Spirograph = () => {
         a1_val_2 = 5
       }
 
-        for (var i =0; i < 5; i++){
-          p5.stroke(color)
+      for (var i =0; i < 5; i++){
+        p5.stroke(color)
 
-          var x1 = r1 * Math.cos(a1)
-          var y1 = r1 *Math.sin(a1)
+        var x1 = r1 * Math.cos(a1)
+        var y1 = r1 *Math.sin(a1)
         
-          var x2 =x1 +r2 * Math.cos(a2)
-          var y2 = y1 +r2 *Math.sin(a2)
+        var x2 =x1 +r2 * Math.cos(a2)
+        var y2 = y1 +r2 *Math.sin(a2)
 
-          p5.line(prevX, prevY, x2, y2)
-          prevX =x2  
-          prevY = y2
+        p5.line(prevX, prevY, x2, y2)
+        prevX =x2  
+        prevY = y2
           
-          p5.point(x1, y1)
-          // a1 += avg_loudness/10
-          a1 += a1_val_1
-          a2 +=a1_val_2
-          
- 
-
+        p5.point(x1, y1)
+        // a1 += avg_loudness/10
+        a1 += a1_val_1
+        a2 +=a1_val_2
         }
  
     }
   
-    // let removeBtn = p5.createButton("Save Canvas");
-    // removeBtn.position(30, 200)
-    // removeBtn.mousePressed(p5.saveToFile);
     if (SavePhotoClicked){
       setSavePhotoClicked(false);
       p5.saveCanvas(pg, 'png', 'photo');
@@ -445,6 +373,8 @@ export const Spirograph = () => {
 
       p5.redraw();
       setChangedBackgroundClicked(false)
+  
+
     }
 
     if (clicked){
@@ -460,29 +390,12 @@ export const Spirograph = () => {
     }
   }
   
-  // function keyPressed(p5: p5Types) {
-  //   if (key == "s"){
-  //     p5.saveCanvas(pg, 'png', 'photo');
-  //   }
-
-  // }
 
   const windowResized = (p5: p5Types) => {
-
-   
     p5.background(backgroundColor);
     p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
-
-      // if(p5.windowHeight > p5.windowWidth){
-      //   factor = p5.windowHeight;
-      //   factdiv = 1080;
-      // }else{
-      //   factor = p5.windowWidth;
-      //   factdiv = 1920;
-      // }
-    // p5.resizeCanvas(800, 800);
-
   };
+
   const contentStyle = {
     maxWidth: "50%",
     width: "90%",
@@ -499,7 +412,7 @@ export const Spirograph = () => {
     <div className= "fixed top-24 pt-20">
     <div className="flex flex-col space-y-1 ... ">
       
-    <button className ="flex text-center bg-blue-700 border-2 border-blue-500  hover:bg-blue-700 text-[24px] text-white font-bold py-2 px-4 rounded" onClick={() => setClickStatus()}>  
+    <button className ="flex text-center bg-blue-700 border-2 border-blue-500  hover:bg-blue-500 text-[24px] text-white font-bold py-2 px-4 rounded" onClick={() => setClickStatus()}>  
       <MdTransform className = "text-center text-4xl mr-5" />   Visualize / Change Color
     </button> 
     
@@ -508,41 +421,129 @@ export const Spirograph = () => {
 
     <div className="flex"> 
     <button className="bg-slate-600 bg-opacity-80 hover:bg-blue-700  text-2xl  text-white font-bold py-2 px-4 rounded border-2 border-blue-500 " onClick={() => setSavePhotoClicked(true)}>  
-      {/* <MdDownload/>  */}
-      Download
+      <MdDownload className = "text-white text-center text-3xl mx-5 "/> 
+      {/* Download */}
     </button> 
     </div>
     <div className="flex"> 
     <button className="bg-slate-600 bg-opacity-90 after:outline-10 hover:bg-blue-700 text-2xl text-white font-bold py-2 px-4 rounded border-2 border-blue-500 " onClick={() =>setBackgroundClickStatus() }>  
-      {/* <MdDownload/>  */}
-      Change Bg. Color
+      {/* Change Bg. Color */}
+      <p> {changeBackgroundIcon ? <div> <BsCardImage className = "text-white text-center text-3xl mx-5 "/> </div>:<div> <BsFillImageFill className = "text-white text-center text-3xl mx-5 "/>  </div> } </p>
+      {/* <BsFillImageFill/>
+      <BsCardImage/>
+      <FaExchangeAlt/> */}
     </button> 
     </div>
-    <div className="flex">
+    <div className="flex " >
       
-      <Popup className = "text-white  text-2xl"trigger={<button className="bg-slate-600 bg-opacity-90 after:outline-10 hover:bg-blue-700 text-[20px] text-white font-bold py-2 px-4 rounded border-2 border-blue-500 " onClick={() =>setBackgroundClickStatus() }>  
+    <Popup className = " text-white  text-2xl "trigger={<button className="bg-slate-600 bg-opacity-90 after:outline-10 hover:bg-blue-700 text-[20px] text-white font-bold py-2 px-4 rounded border-2 border-blue-500 " >  
       {/* <MdDownload/>  */}
       <RiInformationLine className = "text-white text-center text-3xl mx-5 " /> 
     </button> }  modal contentStyle={contentStyle}
       > 
-      <h1 className = "font-['Verdana'] font-medium text-black text-[40px] ml-2"> Spirofy:Visualize your playlist </h1>
+
+      <br/> 
+      <h1 className = "font-['Verdana'] font-medium text-white text-[40px] ml-2"> Spirofy.com: Information </h1>
         <hr/>
         <br/>
         {/* <div className ="text-blue-800"> */}
-        <div className = "text-[25px] ml-2 flex ">1. Click  "Visualize/Change_Color"  to change the color of the spirograph/ to spirofy new playlist </div>
+        <div className = "text-[25px] ml-2 flex text-white">1. Click <p className = "text-blue-800">  "Visualize/Change_Color"  </p> to change the color of the spirograph/ to spirofy new playlist </div>
         <br/>
         {/* <p className = "text-purple-700"> */}
-        <div className = "text-[25px] ml-2 flex">2. Click  "Change_background_Color" to change the background of the screen [white, black] </div>
+        <div className = "text-[25px] ml-2 flex text-white">2. Click <BsCardImage className = "mt-2 mx-5"/> to <p className = "mx-2 text-purple-700"> change the background </p> screen [white, black] </div>
         <br/>
         {/* <p className = "text-rose-700"> */}
-        <div className = "text-[25px] ml-2 flex">3. Click  "Download" to download spirograph as a png file. </div>
+        <div className = "text-[25px] ml-2 flex text-white">3. Click <MdDownload className = "mt-2 mx-5"/>  to <p className = "mx-2 text-rose-600"> download </p> spirograph as a png file to use as your playlist cover! </div>
         <br/>
-        <div className = "text-[25px] ml-2 flex">4. Adjust screen size with "command +/-". </div>
+        <div className = "text-[25px] ml-2 flex text-white">4. Adjust screen size with "command +/-". </div>
         <br/>
-        <div className = "text-[25px] ml-2">Spirofy uses avg. tempo, duration, valence, danceability, loudness, and energy data to visualize your playlists as mathematical forms known as hypotrochoids and epitrochoids. </div>
-        <br/>
+        <div className = "text-[25px] ml-2 text-white">Spirofy uses avg. tempo, duration, valence, danceability, loudness, and energy data to visualize your playlists as mathematical forms known as hypotrochoids and epitrochoids. </div>
         <hr/>
+        <br/> 
+
+      </Popup>
+
+      <Popup className = "popupGraph text-white text-2xl "trigger={<button className="bg-slate-600 bg-opacity-90 after:outline-10 hover:bg-blue-700 text-[20px] text-white font-bold py-2 px-5 ml-1 rounded border-2 border-blue-500 " >  
+      {/* <MdDownload/>  */}
+      <VscGraphLine className = "text-white text-center text-3xl mx-5 " /> 
+    </button> }  modal contentStyle={contentStyle}
+      > 
+
+      <br/> 
+      <h1 className = "font-['Verdana'] font-medium text-white text-[40px] ml-2"> Spirofy.com: Visualize your playlist</h1>
+      <br/> 
+
+
+
+      <hr/>
+      <h3 className = "flex  font-['Verdana'] font-medium text-white text-[40px] ml-2 mt-5"> 
+      <hr/>
+      <img
+        className="ml-5  mr-5 mb-5 flex h-15 w-20 shadow-2xl"
+        src={playlist['images'][0]?.['url']}
+        alt="album image"
+      />
+      Current Playlist:  {playlist.name}</h3>
+      <hr/>
+      <br/> 
         <Line
+            data={{
+              labels: [
+                "Danceability *100",
+                "# of Songs",
+                "Duration:",
+                "Loudness: *10",
+                "Valence *100",
+                "Energy *100",
+                "Tempo"
+              ],
+              datasets: [
+        
+                {
+                  label: "Average Playlist",
+                  data: [0.737*100, 50, 55, -8*10, 0.546*100, 0.72*100, 121.306],
+                  fill: true,
+                  backgroundColor: "rgba(255, 0, 0, 0.4)",
+                  borderColor: "red",
+                  borderWidth: 2
+                },
+                {
+                  label: "Your Playlist",
+                  data: [avg_danceability *100, playlistLength, 60,avg_loudness*10, avg_valence*100, avg_energy*100, avg_tempo],
+                  backgroundColor: "rgba(75,192,192,0.8)",
+                  fill: true,
+                  borderColor: "blue",
+                  borderWidth: 2
+                }
+              ]
+            }}
+            height={220}
+            width={500}
+            options={{
+              maintainAspectRatio: true
+              ,
+              scales: {
+                y: {
+                  ticks: {
+                    color: 'rgb(255,250,250, 0.9)',
+                    font: {
+                      size: 16,
+                    }
+                  }
+                },
+                x: {
+                  ticks: {
+                    color: 'rgb(255,250,250, 0.9)',
+                    font: {
+                      size: 16
+                    }
+                  }
+                }
+              }
+            }}
+          />
+             <br/> 
+          <Bar
             data={{
               labels: [
                 "Danceability *100",
@@ -557,16 +558,16 @@ export const Spirograph = () => {
                 {
                   label: "Your Playlist",
                   data: [avg_danceability *100, playlistLength, 60,avg_loudness*10, avg_valence*100, avg_energy*100, avg_tempo],
-                  backgroundColor: "rgba(75,192,192,0.4)",
-                  fill: true,
+                  backgroundColor: "rgba(75,192,192,0.9)",
+                  // fill: true,
                   borderColor: "blue",
                   borderWidth: 2
                 },
                 {
                   label: "Average Playlist",
                   data: [0.737*100, 50, 55, -8*10, 0.546*100, 0.72*100, 121.306],
-                  fill: true,
-                  backgroundColor: "rgba(255, 0, 0,0.2)",
+                  // fill: true,
+                  backgroundColor: "rgba(255, 0, 0,0.9)",
                   borderColor: "red",
                   borderWidth: 2
                 }
@@ -575,17 +576,37 @@ export const Spirograph = () => {
             height={220}
             width={500}
             options={{
-              maintainAspectRatio: true
+              maintainAspectRatio: true,
+              scales: {
+                y: {
+                  ticks: {
+                    color: 'rgb(255,250,250, 0.9)',
+                    font: {
+                      size: 16,
+                    }
+                  }
+                },
+                x: {
+                  ticks: {
+                    color: 'rgb(255,250,250, 0.9)',
+                    font: {
+                      size: 16
+                    }
+                  }
+                }
+              }
             }}
+            
+            
           />
           
-        <div className = "text-[25px] ml-2 bg-opacity-20"> 
-        <br/>
+        <div className = "text-[25px] text-white ml-2 bg-opacity-20 "> 
         <hr/> 
         <br/>
-        <h4 className = "text-3xl font-['Verdana']  "  > Playlist Characteristic Description: </h4>  
-        <div className = "font-['Courier']"> 
-        <hr/> - Length: The number of songs in a playlist. <br/>  
+        <h4 className = "text-3xl font-['Verdana']  pb-4"  > Playlist Characteristic Description: </h4>  
+      
+        <div className = "font-['Courier'] text-xl-0"> 
+        - Length: The number of songs in a playlist. <br/>  
         - Danceability: A measurement of how danceable the song is derived through a combination of values such as energy, rhythm and other relevant song characteristics. <br/> 
         - Duration: The average length of a song in a playlist. 
         <br/> - Loudness: A measurement of the loudness of the playlist. Louder == more energetic.  
@@ -593,8 +614,13 @@ export const Spirograph = () => {
          <br/>- Energy: A measurement of how intense and active the songs in the playlist are on average.
         <br/>- Tempo: Measured in BPM (Beats Per Minute). Tempo represents the average pace of a playlist.</div>
       </div>
+
       </Popup>
+
+
+
     </div>
+
 
 
     <div className="flex text-white text-center text-[30px] "
@@ -607,12 +633,6 @@ export const Spirograph = () => {
 
       </div>
     
-
-    {/* <button className="bg-slate-600 bg-opacity-90 after:outline-10 hover:bg-blue-700 text-[20px] text-white font-bold py-2 px-4 rounded border-2 border-blue-500 " onClick={() =>onPopupClick() }>  
-
-      Details
-    </button> 
- */}
 
     </div>
 </div>

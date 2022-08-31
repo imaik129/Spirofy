@@ -27,12 +27,13 @@ function SelectionBar() {
 
   const [playlist, setPlaylist] = useRecoilState(playlistState);
 
-  const [playlists, setPlaylists] = useState([])
+  const [playlists, setPlaylists] = useState([] as any[])
   const [playlistId, setPlaylistID] = useRecoilState(playlistIdState)
 
 
   const { data: session, status } = useSession();
   const [audioFeatures, setAudioFeatures] = useRecoilState(audioFeaturesState);
+
 
   const [selected, setSelected] = useState( {
     "collaborative" : false,
@@ -177,22 +178,94 @@ function SelectionBar() {
 
 
   const [allIDs, setallIDs] = useState(['4V33aS5qju2ujbQt8JKi6P']);
+const [offsetVal, setOffsetVal] = useState(50)
 
-
-
+  function onClickVal(){
+    setOffsetVal(offsetVal+50)
+  }
+  // let tempArray = 
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
       // console.log("in use effect")
-      spotifyApi.getUserPlaylists({ limit: 50}).then((data: any) => {
+ 
+      spotifyApi.getUserPlaylists({ limit: 50 ,offset:0}).then((data: any) => {
         setPlaylists(data.body.items);
         // console.log(data.body.items);
       });
     }
+
+    // if (spotifyApi.getAccessToken()) {
+    //   // console.log("in use effect")
+ 
+    //   spotifyApi.getUserPlaylists({ limit: 50 ,offset:50}).then((data: any) => {
+    //     console.log("IN NEWLY CREATED METHod");
+
+
+    //     setPlaylists(playlists => [playlists, ...data.body.items])
+
+    //     // console.log(data.body.items);
+    //   });
+    // }
+    // if (spotifyApi.getAccessToken()) {
+    //   // console.log("in use effect")
+ 
+    //   spotifyApi.getUserPlaylists({ limit: 50 ,offset:100}).then((data: any) => {
+    //     console.log("IN NEWLY CREATED METHod");
+    //     setPlaylists(playlists => [playlists, ...data.body.items])
+
+    //     // console.log(data.body.items);
+    //   });
+    // }
+    // if (spotifyApi.getAccessToken()) {
+    //   // console.log("in use effect")
+ 
+    //   spotifyApi.getUserPlaylists({ limit: 50 ,offset:150}).then((data: any) => {
+    //     console.log("IN NEWLY CREATED METHod");
+    //     setPlaylists(playlists => [playlists, ...data.body.items])
+
+    //     // console.log(data.body.items);
+    //   });
+      
+    // }
+
+    // if (spotifyApi.getAccessToken()) {
+    //   // console.log("in use effect")
+ 
+    //   spotifyApi.getUserPlaylists({ limit: 50 ,offset:200}).then((data: any) => {
+
+    //     setPlaylists(playlists => [...playlists, ...data.body.items])
+
+    //     // console.log(data.body.items);
+    //   });
+      
+    // }
     else{
       console.log("no access token")
     }
+    
+
+
+    
   }, [session, spotifyApi]);
   
+  // useEffect(() => {
+  //   if (spotifyApi.getAccessToken()) {
+  //     // console.log("in use effect")
+ 
+  //     spotifyApi.getUserPlaylists({ limit: 50 ,offset:100}).then((data: any) => {
+  //       console.log("IN NEWLY CREATED METHod");
+  //       setPlaylists(playlists => [...playlists, data.body.items])
+
+  //       // console.log(data.body.items);
+  //     });
+  //   }
+  //   else{
+  //     console.log("no access token")
+  //   }
+  // }, [session, spotifyApi]);
+  
+  
+
 
   function setSelectedAndSetPlaylist(playlist: any){
     setPlaylistID(playlist.id);
