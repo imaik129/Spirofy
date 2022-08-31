@@ -80,7 +80,7 @@ export default function Home() {
 
     <div className="flex justify-center  "> 
       <p className = "flex text-base  mb-20 text-center text-sky-900 font-['Lato'] font-extralight"> 
-      The graph's shape, angles, frame-rate, strokes, thickness, size, disparity, and patterns all correspond to your spotify playlist data <br/>  including but not limited to the playlist's duration, danceability, valence, tempo, length, and loudness. See what your playlist  <br/> looks like as a mathematical pattern, and customize by changing the color of the background and the graph!</p>
+      The graph's shapes, angles, frame-rate, strokes, thickness, size, disparity, and patterns all correspond to your spotify playlist data <br/>  including but not limited to the playlist's duration, danceability, valence, tempo, length, and loudness. See what your playlist  <br/> looks like as a mathematical pattern, and customize by changing the color of the background and the graph!</p>
     </div>
           
     <div className="flex justify-center mb-20"> 

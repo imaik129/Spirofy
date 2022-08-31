@@ -21,6 +21,11 @@ import { MdTransform } from 'react-icons/md';
 import {RiInformationLine} from 'react-icons/ri';
 import {FiLogOut} from 'react-icons/fi';
 
+import { Line } from "react-chartjs-2";
+import {CategoryScale} from 'chart.js'; 
+Chart.register(CategoryScale);
+    import Chart from "chart.js/auto";
+
 // import {RiInformationLine} from "@react-icons/all-files/Ri/RiInformationLine";
   
 // import {MdTransform } from "@react-icons/all-files/Md/MdTransform";
@@ -492,52 +497,107 @@ export const Spirograph = () => {
     <div> 
 
     <div className= "fixed top-24 pt-20">
-    <div className="flex flex-col space-y-1 ...">
+    <div className="flex flex-col space-y-1 ... ">
       
     <button className ="flex text-center bg-blue-700 border-2 border-blue-500  hover:bg-blue-700 text-[24px] text-white font-bold py-2 px-4 rounded" onClick={() => setClickStatus()}>  
-      <MdTransform className = "text-center text-[30px] mr-5" />   Visualize / Change Color
+      <MdTransform className = "text-center text-4xl mr-5" />   Visualize / Change Color
     </button> 
+    
 
     <div className="flex space-x-1 ...">
 
-
-    <button className="bg-slate-600 bg-opacity-80 hover:bg-blue-700 text-[20px] text-white font-bold py-2 px-4 rounded border-2 border-blue-500 " onClick={() => setSavePhotoClicked(true)}>  
+    <div className="flex"> 
+    <button className="bg-slate-600 bg-opacity-80 hover:bg-blue-700  text-2xl  text-white font-bold py-2 px-4 rounded border-2 border-blue-500 " onClick={() => setSavePhotoClicked(true)}>  
       {/* <MdDownload/>  */}
       Download
     </button> 
-    <button className="bg-slate-600 bg-opacity-90 after:outline-10 hover:bg-blue-700 text-[20px] text-white font-bold py-2 px-4 rounded border-2 border-blue-500 " onClick={() =>setBackgroundClickStatus() }>  
+    </div>
+    <div className="flex"> 
+    <button className="bg-slate-600 bg-opacity-90 after:outline-10 hover:bg-blue-700 text-2xl text-white font-bold py-2 px-4 rounded border-2 border-blue-500 " onClick={() =>setBackgroundClickStatus() }>  
       {/* <MdDownload/>  */}
-      Change Background Color
+      Change Bg. Color
     </button> 
-
-
-
-    <div>
+    </div>
+    <div className="flex">
       
-      
-      <Popup className = "text-white  text-[30px]"trigger={<button className="bg-slate-600 bg-opacity-90 after:outline-10 hover:bg-blue-700 text-[20px] text-white font-bold py-2 px-4 rounded border-2 border-blue-500 " onClick={() =>setBackgroundClickStatus() }>  
+      <Popup className = "text-white  text-2xl"trigger={<button className="bg-slate-600 bg-opacity-90 after:outline-10 hover:bg-blue-700 text-[20px] text-white font-bold py-2 px-4 rounded border-2 border-blue-500 " onClick={() =>setBackgroundClickStatus() }>  
       {/* <MdDownload/>  */}
-      <RiInformationLine className = "text-white text-center text-[30px] mx-5 " /> 
+      <RiInformationLine className = "text-white text-center text-3xl mx-5 " /> 
     </button> }  modal contentStyle={contentStyle}
       > 
       <h1 className = "font-['Verdana'] font-medium text-black text-[40px] ml-2"> Spirofy:Visualize your playlist </h1>
         <hr/>
         <br/>
-        <div className = "text-[25px] ml-2 flex">1. Click  <p className = "flex text-blue-600"> "Visualize/Change Color" </p>  to change the color of the spirograph/ to spirofy new playlist </div>
+        {/* <div className ="text-blue-800"> */}
+        <div className = "text-[25px] ml-2 flex ">1. Click  "Visualize/Change_Color"  to change the color of the spirograph/ to spirofy new playlist </div>
         <br/>
-        <div className = "text-[25px] ml-2 flex">2. Click <p className = "flex text-purple-700"> "Change background color" </p> to change the background of the screen [white, black] </div>
+        {/* <p className = "text-purple-700"> */}
+        <div className = "text-[25px] ml-2 flex">2. Click  "Change_background_Color" to change the background of the screen [white, black] </div>
         <br/>
-        <div className = "text-[25px] ml-2 flex">3. Click <p className = "flex text-rose-700"> "Download"</p>  to download spirograph as a png file. </div>
+        {/* <p className = "text-rose-700"> */}
+        <div className = "text-[25px] ml-2 flex">3. Click  "Download" to download spirograph as a png file. </div>
         <br/>
         <div className = "text-[25px] ml-2 flex">4. Adjust screen size with "command +/-". </div>
         <br/>
         <div className = "text-[25px] ml-2">Spirofy uses avg. tempo, duration, valence, danceability, loudness, and energy data to visualize your playlists as mathematical forms known as hypotrochoids and epitrochoids. </div>
-      
+        <br/>
+        <hr/>
+        <Line
+            data={{
+              labels: [
+                "Danceability *100",
+                "# of Songs",
+                "Duration:",
+                "Loudness: *10",
+                "Valence *100",
+                "Energy *100",
+                "Tempo"
+              ],
+              datasets: [
+                {
+                  label: "Your Playlist",
+                  data: [avg_danceability *100, playlistLength, 60,avg_loudness*10, avg_valence*100, avg_energy*100, avg_tempo],
+                  backgroundColor: "rgba(75,192,192,0.4)",
+                  fill: true,
+                  borderColor: "blue",
+                  borderWidth: 2
+                },
+                {
+                  label: "Average Playlist",
+                  data: [0.737*100, 50, 55, -8*10, 0.546*100, 0.72*100, 121.306],
+                  fill: true,
+                  backgroundColor: "rgba(255, 0, 0,0.2)",
+                  borderColor: "red",
+                  borderWidth: 2
+                }
+              ]
+            }}
+            height={220}
+            width={500}
+            options={{
+              maintainAspectRatio: true
+            }}
+          />
+          
+        <div className = "text-[25px] ml-2 bg-opacity-20"> 
+        <br/>
+        <hr/> 
+        <br/>
+        <h4 className = "text-3xl font-['Verdana']  "  > Playlist Characteristic Description: </h4>  
+        <div className = "font-['Courier']"> 
+        <hr/> - Length: The number of songs in a playlist. <br/>  
+        - Danceability: A measurement of how danceable the song is derived through a combination of values such as energy, rhythm and other relevant song characteristics. <br/> 
+        - Duration: The average length of a song in a playlist. 
+        <br/> - Loudness: A measurement of the loudness of the playlist. Louder => more energetic.  
+         <br/>- Valence: A value between 0.0 and 1.0. A higher valence corresponds to emotions such as happy and excited, while a lower valence corresponds to feelings of sadness and depression. 
+         <br/>- Energy: A measurement of how intense and active the songs in the playlist are on average.
+        <br/>- Tempo: Measured in BPM (Beats Per Minute). Tempo represents the average pace of a playlist.</div>
+      </div>
       </Popup>
     </div>
 
 
-    <div className="text-white text-center text-[30px] "
+    <div className="flex text-white text-center text-[30px] "
             onClick= {()=>signOut()}
           >
 
@@ -560,7 +620,7 @@ export const Spirograph = () => {
   
 
 </div>
-
+ <div >
 
       <Sketch
         preload={preload}
@@ -570,11 +630,11 @@ export const Spirograph = () => {
         windowResized={windowResized}
       />
 
-      <div className = "items-center font-serif text-2xl text-[2vw] text-center text-stone-400 ">  
+      {/* <div className = "items-center font-serif text-2xl text-[2vw] text-center text-stone-400 ">  
           Spirofy 2022 v1 by imaik
-      </div> 
+      </div>  */}
 
-
+</div>
     </div>
   );
 };
