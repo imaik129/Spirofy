@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 // import { signOut, useSession} from 'next-auth/react'
-import Head from 'next/head'
+
 import Image from 'next/image'
 
 import  SelectionBar from '../components/SelectionBar';
@@ -10,7 +10,7 @@ import TopNav from '../components/TopNav'
 import {useSession, signIn, signOut, getSession} from 'next-auth/react';
 
 import ImageGallery from 'react-image-gallery';
-
+// import Head from 'next/head'
 // import Spirograph from '../components/Spirograph'
 const images = [
   {
@@ -62,10 +62,11 @@ export default function Home() {
   }
   return (
     <div className="flex-col justify-center bg-white ">
-    
+
+
     <Head>
-        <title>Spirofy: Playlist Visualizer</title>
-        <meta name="viewport" content="initial-scale=0.3, width=device-width" />
+    <title>Spirofy: Playlist Visualizer</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
     <div className="flex justify-center  "> 

@@ -36,7 +36,10 @@ function App({Component, pageProps: {session, ...pageProps}}: any) {
   return (
     
     <SessionProvider session={session}>
-
+      <Head> 
+      <title>Spirofy: Playlist Visualizer</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        </Head> 
       <RecoilRoot>
           <link rel="icon" href="public/favicon.ico"/>
       <Component {...pageProps} />
