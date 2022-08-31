@@ -20,8 +20,7 @@ import { audioFeaturesState } from '../atoms/playlistAtom';
 
 
 function SelectionBar() {
-  //spotify API
-  // <any[]>
+
 
   const spotifyApi = useSpotify()
 
@@ -34,6 +33,7 @@ function SelectionBar() {
   const { data: session, status } = useSession();
   const [audioFeatures, setAudioFeatures] = useRecoilState(audioFeaturesState);
 
+  // const [selected, setSelected] = useState(playlist[])
 
   const [selected, setSelected] = useState( {
     "collaborative" : false,
@@ -178,40 +178,83 @@ function SelectionBar() {
 
 
   const [allIDs, setallIDs] = useState(['4V33aS5qju2ujbQt8JKi6P']);
-const [offsetVal, setOffsetVal] = useState(50)
 
-  function onClickVal(){
-    setOffsetVal(offsetVal+50)
-  }
   // let tempArray = 
+  // useEffect(() => {
+  //   if (spotifyApi.getAccessToken()) {
+  //     // console.log("in use effect")
+ 
+  //     spotifyApi.getUserPlaylists({ limit: 50 ,offset:0}).then((data: any) => {
+  //       setPlaylists(data.body.items);
+  //       // console.log(data.body.items);
+  //     });
+  //   }
+  //   }
+
+
+ 
+  const [playlistOne, setPlaylistOne] = useState([]);
+
+  const [playlistTwo, setPlaylistTwo] = useState([]);
+
+  const [playlistThree, setPlaylistThree] = useState([]);
+
+  const [playlistFour, setPlaylistFour] = useState([]);
+
+  const [playlistFive, setPlaylistFive] = useState([]);
+
+ 
+
   useEffect(() => {
+
     if (spotifyApi.getAccessToken()) {
       // console.log("in use effect")
- 
+      let tempPlaylists = [];
       spotifyApi.getUserPlaylists({ limit: 50 ,offset:0}).then((data: any) => {
-        setPlaylists(data.body.items);
+        setPlaylistOne(data.body.items)
+        // setPlaylists(data.body.items);
         // console.log(data.body.items);
       });
+
+      spotifyApi.getUserPlaylists({ limit: 50 ,offset:51}).then((data: any) => {
+        console.log("IN NEWLY CREATED METHod");
+        setPlaylistTwo(data.body.items);
+        // setPlaylists(playlists => [playlists, ...data.body.items])
+
+        // console.log(data.body.items);
+      });
+
+      spotifyApi.getUserPlaylists({ limit: 50 ,offset:102}).then((data: any) => {
+        setPlaylistThree(data.body.items);
+        // setPlaylists(playlists => [playlists, ...data.body.items])
+
+        // console.log(data.body.items);
+      });
+      spotifyApi.getUserPlaylists({ limit: 50 ,offset:154}).then((data: any) => {
+        setPlaylistFour(data.body.items);
+        // setPlaylists(playlists => [playlists, ...data.body.items])
+
+        // console.log(data.body.items);
+      });
+
+      spotifyApi.getUserPlaylists({ limit: 50 ,offset:205}).then((data: any) => {
+        setPlaylistFive(data.body.items);
+        // setPlaylists(playlists => [playlists, ...data.body.items])
+
+        // console.log(data.body.items);
+      });
+
+      setPlaylists([...playlistOne, ...playlistTwo, ...playlistThree, ...playlistFour, ...playlistFive]);
+      // setPlaylists(playlistOne, playlistTwo)
     }
 
-    // if (spotifyApi.getAccessToken()) {
-    //   // console.log("in use effect")
- 
-    //   spotifyApi.getUserPlaylists({ limit: 50 ,offset:50}).then((data: any) => {
-    //     console.log("IN NEWLY CREATED METHod");
 
-
-    //     setPlaylists(playlists => [playlists, ...data.body.items])
-
-    //     // console.log(data.body.items);
-    //   });
-    // }
     // if (spotifyApi.getAccessToken()) {
     //   // console.log("in use effect")
  
     //   spotifyApi.getUserPlaylists({ limit: 50 ,offset:100}).then((data: any) => {
     //     console.log("IN NEWLY CREATED METHod");
-    //     setPlaylists(playlists => [playlists, ...data.body.items])
+    //     setPlaylists(playlists => [...playlists, ...data.body.items])
 
     //     // console.log(data.body.items);
     //   });
@@ -221,7 +264,7 @@ const [offsetVal, setOffsetVal] = useState(50)
  
     //   spotifyApi.getUserPlaylists({ limit: 50 ,offset:150}).then((data: any) => {
     //     console.log("IN NEWLY CREATED METHod");
-    //     setPlaylists(playlists => [playlists, ...data.body.items])
+    //     setPlaylists(playlists => [...playlists, ...data.body.items])
 
     //     // console.log(data.body.items);
     //   });
@@ -385,7 +428,7 @@ useEffect(() => {
                           <span className="absolute inset-y-2 left-0 flex items-center">
                           <img
                               className="h-8 w-58shadow-2xl"
-                              src={playlist['images'][0]?.['url']}
+                              src={(playlist['images'] == undefined) ? null : playlist['images'][0]?.['url']}
                               alt="album image"
                           />
 
