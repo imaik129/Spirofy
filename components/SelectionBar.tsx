@@ -211,20 +211,21 @@ function SelectionBar() {
       // console.log("in use effect")
       let tempPlaylists = [];
       spotifyApi.getUserPlaylists({ limit: 50 ,offset:0}).then((data: any) => {
-        setPlaylistOne(data.body.items)
-        // setPlaylists(data.body.items);
+        // setPlaylistOne(data.body.items)
+        setPlaylists(data.body.items);
         // console.log(data.body.items);
       });
 
-      spotifyApi.getUserPlaylists({ limit: 50 ,offset:51}).then((data: any) => {
-        console.log("IN NEWLY CREATED METHod");
-        setPlaylistTwo(data.body.items);
-        // setPlaylists(playlists => [playlists, ...data.body.items])
+      // spotifyApi.getUserPlaylists({ limit: 50 ,offset:51}).then((data: any) => {
+      //   console.log("IN NEWLY CREATED METHod");
+      //   setPlaylistTwo(data.body.items);
+      //   // setPlaylists(playlists => [playlists, ...data.body.items])
 
-        // console.log(data.body.items);
-      });
+      //   // console.log(data.body.items);
+      // });
 
-      setPlaylists([...playlistOne, ...playlistTwo]);
+      // setPlaylists([playlistOne])
+      // setPlaylists([...playlistOne, ...playlistTwo]);
       // spotifyApi.getUserPlaylists({ limit: 50 ,offset:102}).then((data: any) => {
       //   setPlaylistThree(data.body.items);
       //   // setPlaylists(playlists => [playlists, ...data.body.items])
