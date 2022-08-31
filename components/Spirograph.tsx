@@ -134,7 +134,8 @@ export const Spirograph = () => {
   const setup = (p5: p5Types, canvasParentRef: Element)=> {
     p5.background(backgroundColor);
     p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
-    pg = p5.createGraphics(800, 1000);
+    // pg = p5.createGraphics(800, 1000);
+    pg = p5.createGraphics(p5.windowWidth, p5.windowHeight);
   };
 
   function setClickStatus() {
@@ -349,7 +350,10 @@ export const Spirograph = () => {
         
         var x2 =x1 +r2 * Math.cos(a2)
         var y2 = y1 +r2 *Math.sin(a2)
-
+        if(x==0 && i ==0){
+          p5.stroke(0)
+          p5.strokeWeight(1);
+        }
         p5.line(prevX, prevY, x2, y2)
         prevX =x2  
         prevY = y2
@@ -394,6 +398,7 @@ export const Spirograph = () => {
   const windowResized = (p5: p5Types) => {
     p5.background(backgroundColor);
     p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+    
   };
 
   const contentStyle = {
@@ -618,7 +623,7 @@ export const Spirograph = () => {
         <br/>
         <h4 className = "text-3xl font-['Verdana']  pb-4"  > Playlist Characteristic Description: </h4>  
       
-        <div className = "characteristic font-['Courier'] text-xl-0"> 
+        <div className = "characteristic font-['Courier'] text-sm"> 
         - Length: The number of songs in a playlist. <br/>  
         - Danceability: A measurement of how danceable the song is derived through a combination of values such as energy, rhythm and other relevant song characteristics. <br/> 
         - Duration: The average length of a song in a playlist. 

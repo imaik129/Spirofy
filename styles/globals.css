@@ -64,7 +64,7 @@ html, body{
 .popup-content{
    margin: auto;
    background: rgb(0, 0, 0, 0.7) !important;
-   width: 60% !important;
+   width: 100% !important;
    padding: 5px;
    height:80% !important;
    background-color: black !important;
