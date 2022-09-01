@@ -425,21 +425,21 @@ export const Spirograph = () => {
     <div className="flex space-x-1 ...">
 
     <div className="flex"> 
-    <button className="bg-slate-600 bg-opacity-80 hover:bg-blue-700  text-2xl  text-white font-bold py-2 px-4 rounded border-2 border-blue-500 " onClick={() => setSavePhotoClicked(true)}>  
+    <button className="bg-slate-600 bg-opacity-80 hover:bg-blue-700  lg:text-4xl md:text-3xl sm:text-sm text-white font-bold py-2 px-4 rounded border-2 border-blue-500 " onClick={() => setSavePhotoClicked(true)}>  
       <MdDownload className = "text-white text-center text-3xl mx-5 "/> 
       {/* Download */}
     </button> 
     </div>
     <div className="flex"> 
-    <button className="bg-slate-600 bg-opacity-90 after:outline-10 hover:bg-blue-700 text-2xl text-white font-bold py-2 px-4 rounded border-2 border-blue-500 " onClick={() =>setBackgroundClickStatus() }>  
+    <button className="bg-slate-600 bg-opacity-90 after:outline-10 hover:bg-blue-700 lg:text-4xl md:text-3xl sm:text-sm text-white font-bold sm:py-2 sm:px-4 rounded border-2 border-blue-500 " onClick={() =>setBackgroundClickStatus() }>  
       {/* Change Bg. Color */}
       <p> {changeBackgroundIcon ? <BsCardImage className = "text-white text-center text-3xl mx-5 "/> : <BsFillImageFill className = "text-white text-center text-3xl mx-5 "/>  } </p>
 
     </button> 
     </div>
-    <div className="flex " >
+    <div className="flex w-full" >
       
-    <Popup className = " text-white  text-2xl "trigger={<button className="bg-slate-600 bg-opacity-90 after:outline-10 hover:bg-blue-700 text-[20px] text-white font-bold py-2 px-4 rounded border-2 border-blue-500 " >  
+    <Popup className = " text-white  text-2xl " trigger={<button className="bg-slate-600 lg:text-4xl md:text-3xl sm:text-sm bg-opacity-90 after:outline-10 hover:bg-blue-700  text-white font-bold rounded border-2 border-blue-500 " >  
       {/* <MdDownload/>  */}
       <RiInformationLine className = "text-white text-center text-3xl mx-5 " /> 
     </button> }  modal contentStyle={contentStyle}
@@ -461,6 +461,8 @@ export const Spirograph = () => {
           <div className = "text-sm ml-2 flex text-white">3. Click the download button to download spirograph as a png file! (e.g. use as playlist cover, share with friends!) </div>
           <br/>
           <div className = "text-sm ml-2 flex text-white">4. Adjust screen size with "command +/-". </div>
+          <br/>
+          <div className = "text-sm ml-2 flex text-white">5. For best expereince use web version. </div>
           <br/>
           <div className = "text-sm ml-2 text-white">Spirofy uses avg. tempo, duration, valence, danceability, loudness, and energy data to visualize your playlists as mathematical forms known as hypotrochoids and epitrochoids. </div>
           <hr/>
@@ -501,7 +503,9 @@ export const Spirograph = () => {
         src={playlist['images'][0]?.['url']}
         alt="album image"
       />
-      Current Playlist:  {playlist.name}</h3>
+      <p className= "mt-5"> 
+      Current Playlist:  {playlist.name}
+      </p> </h3>
       <hr/>
       <br/> 
         <Line
@@ -535,11 +539,12 @@ export const Spirograph = () => {
                 }
               ]
             }}
-            height={220}
-            width={500}
+            height={250}
+            width={400}
             options={{
               maintainAspectRatio: true
               ,
+              responsive: true,
               scales: {
                 y: {
                   ticks: {
@@ -591,10 +596,11 @@ export const Spirograph = () => {
                 }
               ]
             }}
-            height={220}
-            width={500}
+            height={250}
+            width={400}
             options={{
               maintainAspectRatio: true,
+              responsive: true,
               scales: {
                 y: {
                   ticks: {

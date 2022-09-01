@@ -62,12 +62,11 @@ html, body{
  
  
 .popup-content{
-   margin: auto;
+   margin: auto !important;
    background: rgb(0, 0, 0, 0.7) !important;
    width: 100% !important;
    padding: 5px;
    height:80% !important;
    background-color: black !important;
    overflow:auto !important;
-   overflow-x: scroll;
  }
