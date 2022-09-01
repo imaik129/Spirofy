@@ -92,6 +92,9 @@ export const Spirograph = () => {
   
   const playlistLength = audioFeatures['audio_features']?.length;
 
+
+  const[miniClick, setMiniClick] = useState(2);
+  
   // const[popupClicked, setPopupClicked] = useState(false);
 
 
@@ -135,11 +138,14 @@ export const Spirograph = () => {
     p5.background(backgroundColor);
     p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
     // pg = p5.createGraphics(800, 1000);
+
+
     pg = p5.createGraphics(p5.windowWidth, p5.windowHeight);
   };
 
   function setClickStatus() {
     setClicked(true);
+    
     colorArray = colorSelections[Math.floor((Math.random() * 21) + 1)]
   }
 
@@ -156,7 +162,48 @@ export const Spirograph = () => {
 
   }
 
+// 0 1 2 3 4
 
+  function setSize(){
+
+    if (miniClick == 2){
+      setMiniClick(1)
+    }
+    else if(miniClick == 1){
+      setMiniClick(0)
+    }
+    else if(miniClick == 0){
+      setMiniClick(6)
+    }
+    else if(miniClick == 6){
+      setMiniClick(7)
+    }
+    else if(miniClick == 7){
+      setMiniClick(8)
+    }
+    else if(miniClick == 8){
+      setMiniClick(9)
+    }
+    else if(miniClick == 9){
+      setMiniClick(3)
+    }
+    else if(miniClick == 3){
+      setMiniClick(2)
+    }
+
+
+    // else if(miniClick == 0){
+    //   setMiniClick(4)
+    // }
+    // else if(miniClick == 4){
+    //   setMiniClick(3)
+    // }
+
+    // else{
+    //   setMiniClick(1)
+    // }
+
+  }
   //blueish/purple
   //blueish/green
   //light pink
@@ -184,8 +231,9 @@ export const Spirograph = () => {
 
   let color = "#000000"
 
- 
+  let val; 
   const draw = (p5: p5Types) => {
+
 
     let a_tempo = avgFeatures[0];
     let a_danceability = avgFeatures[1];
@@ -218,8 +266,44 @@ export const Spirograph = () => {
     let numStrokes = a_tempo *5;
 
     const a1_val = a_valence *1000; 
-    
+    let scaleVal = 1;
+    p5.clear();
     for (var x = 0; x < (numStrokes); x++){
+
+
+      /* Scale Function*/ 
+      if(miniClick == 0){
+       scaleVal =0.99;
+      }
+      if(miniClick == 1){
+        scaleVal =0.999;
+      }
+      if(miniClick == 3){
+        scaleVal =1.001;
+      }
+
+      if(miniClick == 4){
+        scaleVal =1.01;
+      }
+      if(miniClick == 5){
+        scaleVal =0.99;
+       }
+       if(miniClick == 6){
+         scaleVal =0.999;
+       }
+       if(miniClick == 7){
+        scaleVal =1;
+      }
+       if(miniClick == 8){
+         scaleVal =1.001;
+       }
+       if(miniClick == 9){
+         scaleVal =1.01;
+       }
+
+      p5.scale(scaleVal);
+
+
       if(a_energy > 0.7){
         r1 = r1 +2;
       }
@@ -276,7 +360,7 @@ export const Spirograph = () => {
       else{
         color = colorArray[4]
       }
-      
+
 
       let a1_val_1 = 1;
       let a1_val_2 = 5;
@@ -365,6 +449,14 @@ export const Spirograph = () => {
         }
  
     }
+
+    // let scaleXValue = scaleXslider.value();
+    // let scaleYValue = scaleYslider.value();
+    
+
+    // p5.scale(scaleXValue, scaleYValue);
+  
+
   
     if (SavePhotoClicked){
       setSavePhotoClicked(false);
@@ -372,12 +464,12 @@ export const Spirograph = () => {
       
     }
     if(changeBackgroundClicked){
+
       // console.log("SET IS TRUE")
       p5.background(backgroundColor);
-
+      p5.scale(3);
       p5.redraw();
       setChangedBackgroundClicked(false)
-  
 
     }
 
@@ -386,6 +478,7 @@ export const Spirograph = () => {
       p5.background(backgroundColor);
 
       setAvgFeatures([avg_tempo, avg_danceability, avg_valence, avg_energy, playlistLength, avg_loudness])
+
       p5.redraw();
       setClicked(false);
  
@@ -398,7 +491,7 @@ export const Spirograph = () => {
   const windowResized = (p5: p5Types) => {
     p5.background(backgroundColor);
     p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
-    
+
   };
 
   const contentStyle = {
@@ -430,6 +523,14 @@ export const Spirograph = () => {
       {/* Download */}
     </button> 
     </div>
+
+    <div className="flex"> 
+    <button className="bg-slate-600 bg-opacity-80 hover:bg-blue-700  lg:text-4xl md:text-3xl sm:text-sm text-white font-bold py-2 px-4 rounded border-2 border-blue-500 " onClick={() => setSize()}>  
+      +/-
+      {/* Download */}
+    </button> 
+    </div>
+
     <div className="flex"> 
     <button className="bg-slate-600 bg-opacity-90 after:outline-10 hover:bg-blue-700 lg:text-4xl md:text-3xl sm:text-sm text-white font-bold sm:py-2 sm:px-4 rounded border-2 border-blue-500 " onClick={() =>setBackgroundClickStatus() }>  
       {/* Change Bg. Color */}
