@@ -32,13 +32,14 @@ import Footer from '../components/Footer'
 
 
 function App({Component, pageProps: {session, ...pageProps}}: any) {
-
+  const description = "A playlist visualizer for Spotify. Create unique mathematical spirographs using detailed playlist data."
   return (
     
     <SessionProvider session={session}>
       <Head> 
       <title>Spirofy: Playlist Visualizer</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="description" content={description} />
         </Head> 
       <RecoilRoot>
           <link rel="icon" href="public/favicon.ico"/>
