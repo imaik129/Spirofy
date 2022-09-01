@@ -268,6 +268,7 @@ export const Spirograph = () => {
     const a1_val = a_valence *1000; 
     let scaleVal = 1;
     p5.clear();
+    p5.background(backgroundColor);
     for (var x = 0; x < (numStrokes); x++){
 
 
@@ -464,12 +465,11 @@ export const Spirograph = () => {
       
     }
     if(changeBackgroundClicked){
-
       // console.log("SET IS TRUE")
       p5.background(backgroundColor);
-      p5.scale(3);
       p5.redraw();
       setChangedBackgroundClicked(false)
+      
 
     }
 
@@ -553,7 +553,7 @@ export const Spirograph = () => {
 
         <div className = ""> 
           {/* <div className ="text-blue-800"> */}
-          <div className = "text-sm ml-2 flex text-white">1. Click  "Visualize/Change_Color" to change the color of the spirograph/ to spirofy new playlist </div>
+          <div className = "text-sm ml-2 flex text-white">1. Click "Visualize/Change_Color" to change the color of the spirograph/ to spirofy new playlist </div>
           <br/>
           {/* <p className = "text-purple-700"> */}
           <div className = "text-sm ml-2 flex text-white">2. Click Background Icon to change the background color of the screen [white, black] </div>
@@ -561,9 +561,9 @@ export const Spirograph = () => {
           {/* <p className = "text-rose-700"> */}
           <div className = "text-sm ml-2 flex text-white">3. Click the download button to download spirograph as a png file! (e.g. use as playlist cover, share with friends!) </div>
           <br/>
-          <div className = "text-sm ml-2 flex text-white">4. Adjust screen size with "command +/-". </div>
+          <div className = "text-sm ml-2 flex text-white">4. Click the "+/-" button to scale the spirograph, or adjust screen with "command +/-". </div>
           <br/>
-          <div className = "text-sm ml-2 flex text-white">5. For best expereince use web version. </div>
+          <div className = "text-sm ml-2 flex text-white">5. For best experience open on larger screen. </div>
           <br/>
           <div className = "text-sm ml-2 text-white">Spirofy uses avg. tempo, duration, valence, danceability, loudness, and energy data to visualize your playlists as mathematical forms known as hypotrochoids and epitrochoids. </div>
           <hr/>
@@ -600,11 +600,11 @@ export const Spirograph = () => {
       <h3 className = "flex  font-['Verdana'] font-medium text-white text-3xl ml-2 mt-5"> 
       <hr/>
       <img
-        className="ml-5  mr-5 mb-5 flex h-15 w-20 shadow-2xl"
+        className="mx-5 mb-5 flex aspect-square w-1/12 h-min shadow-2xl"
         src={playlist['images'][0]?.['url']}
         alt="album image"
       />
-      <p className= "mt-5"> 
+      <p className= "mt-5 text-5xl"> 
       Current Playlist:  {playlist.name}
       </p> </h3>
       <hr/>
