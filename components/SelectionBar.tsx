@@ -271,7 +271,7 @@ function SelectionBar() {
     if (spotifyApi.getAccessToken()) {
       // console.log("in use effect")
  
-      spotifyApi.getUserPlaylists({ limit: 50 ,offset:154}).then((data: any) => {
+      spotifyApi.getUserPlaylists({ limit: 50 ,offset:102}).then((data: any) => {
         setPlaylistThree(data.body.items);
         // console.log(data.body.items);
       });
@@ -287,7 +287,7 @@ function SelectionBar() {
     if (spotifyApi.getAccessToken()) {
       // console.log("in use effect")
  
-      spotifyApi.getUserPlaylists({ limit: 50 ,offset:205}).then((data: any) => {
+      spotifyApi.getUserPlaylists({ limit: 50 ,offset:253}).then((data: any) => {
         setPlaylistFour(data.body.items);
         // console.log(data.body.items);
       });
