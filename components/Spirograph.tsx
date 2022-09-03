@@ -525,7 +525,7 @@ export const Spirograph = () => {
     </div>
 
     <div className="flex"> 
-    <button className="bg-slate-600 font-extralight bg-opacity-80 hover:bg-blue-700  lg:text-4xl md:text-3xl sm:text-lg text-white py-2 px-4 rounded border-2 border-blue-500 " onClick={() => setSize()}>  
+    <button className="bg-slate-600 font-extralight bg-opacity-80 hover:bg-blue-700  lg:text-4xl md:text-3xl sm:text-2xl text-white py-2 px-4 rounded border-2 border-blue-500 " onClick={() => setSize()}>  
       +/-
       {/* Download */}
     </button> 
@@ -600,11 +600,11 @@ export const Spirograph = () => {
       <h3 className = "flex  font-['Verdana'] font-medium text-white text-3xl ml-2 mt-5"> 
       <hr/>
       <img
-        className="mx-5 mb-5 flex aspect-square w-1/12 h-min shadow-2xl"
+        className="sm:hidden mx-5 mb-5 flex aspect-square w-1/12 h-min shadow-2xl"
         src={playlist['images'][0]?.['url']}
         alt="album image"
       />
-      <p className= "mt-5 text-5xl"> 
+      <p className= "mt-5 text-5xl sm:text-3xl"> 
       Current Playlist:  {playlist.name}
       </p> </h3>
       <hr/>

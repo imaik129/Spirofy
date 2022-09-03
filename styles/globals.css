@@ -12,7 +12,7 @@ html, body{
 }
 
 #popup-4{
-  width:100% !important;
+  width:500px !important;
 }
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
