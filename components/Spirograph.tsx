@@ -651,7 +651,7 @@ export const Spirograph = () => {
                   ticks: {
                     color: 'rgb(255,250,250, 0.9)',
                     font: {
-                      size: 10,
+                      size: 15,
                     }
                   }
                 },
@@ -659,7 +659,7 @@ export const Spirograph = () => {
                   ticks: {
                     color: 'rgb(255,250,250, 0.9)',
                     font: {
-                      size: 10
+                      size: 15
                     }
                   }
                 }
@@ -707,7 +707,7 @@ export const Spirograph = () => {
                   ticks: {
                     color: 'rgb(255,250,250, 0.9)',
                     font: {
-                      size: 10
+                      size: 15
                     }
                   }
                 },
@@ -715,7 +715,7 @@ export const Spirograph = () => {
                   ticks: {
                     color: 'rgb(255,250,250, 0.9)',
                     font: {
-                      size: 10
+                      size: 15
                     }
                   }
                 }
@@ -730,7 +730,7 @@ export const Spirograph = () => {
         <br/>
         <h4 className = "text-3xl font-['Verdana']  pb-4"  > Playlist Characteristic Description: </h4>  
       
-        <div className = "characteristic font-['Courier'] text-sm"> 
+        <div className = "characteristic font-['Courier'] text-xl2"> 
         - Length: The number of songs in a playlist. <br/>  
         - Danceability: A measurement of how danceable the song is derived through a combination of values such as energy, rhythm and other relevant song characteristics. <br/> 
         - Duration: The average length of a song in a playlist. 
