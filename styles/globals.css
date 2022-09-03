@@ -9,6 +9,7 @@
 html, body{
    background-color:  black;
    font-family: 'Montserrat', sans-serif;
+   min-height: 2000px;
 }
 
 #popup-4{
