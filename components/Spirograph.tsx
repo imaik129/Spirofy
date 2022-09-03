@@ -600,7 +600,7 @@ export const Spirograph = () => {
       <h3 className = "flex font-['Verdana'] font-medium text-white text-3xl ml-2 mt-5"> 
       <hr/>
       <img
-        className="sm:hidden md:hidden mx-5 mb-5 flex aspect-square w-1/12 h-min shadow-2xl"
+        className=" lg:hidden mx-5 mb-5 flex aspect-square w-1/12 h-min shadow-2xl"
         src={playlist['images'][0]?.['url']}
         alt="album image"
       />
