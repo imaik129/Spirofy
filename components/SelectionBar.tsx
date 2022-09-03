@@ -351,7 +351,7 @@ useEffect(() => {
 
     <div> 
         <div className = "flex flex-col space-y-1 ..."> 
-        {/* papyrus */}
+        {/* papyrus */} 
           <div className = "font-['Wingdings']  fixed top-0  text-[5em]  text-blue-300">
             Spirofy
           </div>

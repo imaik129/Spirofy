@@ -8,9 +8,12 @@
 
 html, body{
    background-color:  black;
+   font-family: 'Montserrat', sans-serif;
 }
 
-
+#popup-4{
+  width:100% !important;
+}
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
 .image-gallery-slide{
