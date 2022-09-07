@@ -525,7 +525,7 @@ export const Spirograph = () => {
     </div>
 
     <div className="flex"> 
-    <button className="bg-slate-600 font-extralight bg-opacity-80 hover:bg-blue-700  lg:text-4xl md:text-3xl sm:text-2xl text-white py-2 px-4 rounded border-2 border-blue-500 " onClick={() => setSize()}>  
+    <button className="bg-slate-600 font-extralight bg-opacity-80 hover:bg-blue-700  lg:text-4xl md:text-4xl sm:text-4xl text-white py-2 px-4 rounded border-2 border-blue-500 " onClick={() => setSize()}>  
       +/-
       {/* Download */}
     </button> 

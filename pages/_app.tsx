@@ -39,6 +39,7 @@ function App({Component, pageProps: {session, ...pageProps}}: any) {
       <Head> 
       <title>Spirofy: Playlist Visualizer</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <meta name="description" content={description} />
         </Head> 
       <RecoilRoot>
