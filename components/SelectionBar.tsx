@@ -352,8 +352,8 @@ useEffect(() => {
     <div> 
         <div className = "flex flex-col space-y-1 ..."> 
         {/* papyrus */} 
-          <div className = "font-['Wingdings']  fixed top-0  text-[5em]  text-blue-300">
-            Spirofy
+          <div className = "font-['Proxima Nova'] ml-10 fixed top-0  text-[5em]  text-sky-300">
+            spirofy
           </div>
       
           <div>
@@ -363,7 +363,7 @@ useEffect(() => {
       <div className="fixed top-20 pt-9 w-72 ">
         {/*   */}
         <Listbox value={selected}  onChange={setSelectedAndSetPlaylist}>
-          <div className="relative mt-1">
+          <div className="ml-10 relative mt-1">
              <Listbox.Button className=" py-2 border-2 border-blue-500  relative w-full cursor-default rounded-lg bg-white  bg-opacity-80 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
                 <span className="block truncate inset-y-0 left-0 flex items-center">
                   <img
@@ -391,7 +391,7 @@ useEffect(() => {
               leaveTo="opacity-0"
             >
             
-            <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+            <Listbox.Options className=" absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                 
                 {playlists.concat(playlistTwo, playlistThree, playlistFour).map((playlist) => (
                   <Listbox.Option

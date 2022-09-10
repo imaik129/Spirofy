@@ -41,7 +41,7 @@ function App({Component, pageProps: {session, ...pageProps}}: any) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="shortcut icon" href="public/favicon.ico" />
         <meta name="description" content={description} />
-        </Head> 
+      </Head> 
       <RecoilRoot>
           <link rel="icon" href="public/favicon.ico"/>
       <Component {...pageProps} />

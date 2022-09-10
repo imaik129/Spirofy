@@ -507,7 +507,7 @@ export const Spirograph = () => {
     
     <div> 
 
-    <div className= "fixed top-24 pt-20">
+    <div className= "ml-10 fixed top-24 pt-20">
     <div className="flex flex-col space-y-1 ... ">
       
     <button className ="flex text-center bg-blue-700 border-2 border-blue-500  hover:bg-blue-500 text-[24px] text-white font-bold py-2 px-4 rounded" onClick={() => setClickStatus()}>  
