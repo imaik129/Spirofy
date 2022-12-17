@@ -8,8 +8,13 @@ module.exports = {
     extend: {
       colors: {
         'spotifyGreen': { DEFAULT: "#1DB954" },
-      }
+      },
+      backgroundSize: {
+        "size-200": "200% 200%",
+      },
     }
   },
   plugins: [],
 }
+
+

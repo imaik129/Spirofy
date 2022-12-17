@@ -7,9 +7,7 @@ import { useEffect, useState } from 'react';
 // import { songIdState } from '../atoms/playlistAtom';
 import { audioFeaturesState } from '../atoms/playlistAtom';
 
-// import useSpotify from '../hooks/useSpotify';
 
-// import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { signOut, useSession } from 'next-auth/react';
 
 import React from 'react';
@@ -22,20 +20,10 @@ import {RiInformationLine} from 'react-icons/ri';
 import {FiLogOut} from 'react-icons/fi';
 import {VscGraphLine} from 'react-icons/vsc';
 import{BsFillImageFill,BsCardImage} from 'react-icons/bs';
-// import {FaExchangeAlt} from 'react-icons/fa';
 import { Line, Bar} from "react-chartjs-2";
 import {CategoryScale} from 'chart.js'; 
 Chart.register(CategoryScale);
 import Chart from "chart.js/auto";
-
-// import {RiInformationLine} from "@react-icons/all-files/Ri/RiInformationLine";
-  
-// import {MdTransform } from "@react-icons/all-files/Md/MdTransform";
-
-
-// import {FiLogOut} from "@react-icons/all-files/Fi/FiLogOut";
-
-
 
 import {MdDownload} from "react-icons/md";
 
@@ -83,6 +71,7 @@ export const Spirograph = () => {
   const[SavePhotoClicked, setSavePhotoClicked]= useState(false)
 
   const audioFeatures:{ [key: string]: any } = useRecoilValue(audioFeaturesState);
+
   
   const [playlist, setPlaylist] = useRecoilState(playlistState);
 
@@ -92,11 +81,13 @@ export const Spirograph = () => {
   
   const playlistLength = audioFeatures['audio_features']?.length;
 
+  const playlistName = playlist['name']
+
+  
+
 
   const[miniClick, setMiniClick] = useState(2);
   
-  // const[popupClicked, setPopupClicked] = useState(false);
-
 
   function findAverage (featureName: string){
     const feature = featureName
@@ -123,12 +114,6 @@ export const Spirograph = () => {
   const avg_duration = findAverage("duration");
 
 
-  // console.log("avg_danceability: ", avg_danceability)
-  // console.log("avg_tempo: ",  avg_tempo)
-  // console.log("avg_valence: ", avg_valence)
-  // console.log("avg_energy: ", avg_energy)
-  // console.log("avg_loudness: ", avg_loudness)
-
   const preload = (p5: p5Types) => {};
  
 
@@ -138,7 +123,6 @@ export const Spirograph = () => {
     p5.background(backgroundColor);
     p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
     // pg = p5.createGraphics(800, 1000);
-
 
     pg = p5.createGraphics(p5.windowWidth, p5.windowHeight);
   };
@@ -204,6 +188,8 @@ export const Spirograph = () => {
     // }
 
   }
+
+  /* Color Combination*/
   //blueish/purple
   //blueish/green
   //light pink
@@ -228,12 +214,9 @@ export const Spirograph = () => {
 
 
 
-
   let color = "#000000"
-
   let val; 
   const draw = (p5: p5Types) => {
-
 
     let a_tempo = avgFeatures[0];
     let a_danceability = avgFeatures[1];
@@ -451,19 +434,13 @@ export const Spirograph = () => {
  
     }
 
-    // let scaleXValue = scaleXslider.value();
-    // let scaleYValue = scaleYslider.value();
-    
-
-    // p5.scale(scaleXValue, scaleYValue);
-  
-
   
     if (SavePhotoClicked){
       setSavePhotoClicked(false);
-      p5.saveCanvas(pg, 'png', 'photo');
+      p5.saveCanvas(pg,  playlistName, 'png');
       
     }
+
     if(changeBackgroundClicked){
       // console.log("SET IS TRUE")
       p5.background(backgroundColor);
@@ -510,7 +487,7 @@ export const Spirograph = () => {
     <div className= "ml-10 fixed top-24 pt-20">
     <div className="flex flex-col space-y-1 ... ">
       
-    <button className ="flex text-center bg-blue-700 border-2 border-blue-500  hover:bg-blue-500 text-[24px] text-white font-bold py-2 px-4 rounded" onClick={() => setClickStatus()}>  
+    <button className ="flex text-center bg-blue-700 border-2 border-blue-500  hover:bg-blue-500 text-[24px] text-white bg-opacity-70 font-bold py-2 px-4 rounded" onClick={() => setClickStatus()}>  
       <MdTransform className = "text-center text-4xl mr-5" />   Visualize / Change Color
     </button> 
     
@@ -775,9 +752,7 @@ export const Spirograph = () => {
         windowResized={windowResized}
       />
 
-      {/* <div className = "items-center font-serif text-2xl text-[2vw] text-center text-stone-400 ">  
-          Spirofy 2022 v1 by imaik
-      </div>  */}
+
 
 </div>
     </div>

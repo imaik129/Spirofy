@@ -49,10 +49,10 @@ function SelectionBar() {
     "id" : "23ZNzltCcWKLltQFlrwIUx",
     "images" : [ {
       "height" : 640,
-      "url" : "https://i.scdn.co/image/ab67616d0000b27353f6fa0d2589c6a7174f4b81",
+      "url" : '../Icon/spotify.png',
       "width" : 640
     } ],
-    "name" : "Normal People",
+    "name" : "Select Playlist",
     "owner" : {
       "display_name" : "kyosuke912",
       "external_urls" : {
@@ -320,6 +320,8 @@ function SelectionBar() {
   }, [spotifyApi, playlist]);
   
 
+  /*  function to get user's top tracks*/
+  
   // useEffect(() => {
   //   spotifyApi.getMyTopTracks().then((data) => {
   //     console.log("USER TOP TRACKS: ", data.body);

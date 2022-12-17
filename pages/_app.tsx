@@ -46,7 +46,7 @@ function App({Component, pageProps: {session, ...pageProps}}: any) {
           <link rel="icon" href="public/favicon.ico"/>
       <Component {...pageProps} />
       </RecoilRoot>
-      <Footer/>
+      {/* <Footer/> */}
     </SessionProvider>
     
 
