@@ -11,5 +11,5 @@ You can also compare your playlist with an average Spotify Playlist via graphs.
 <img width="364" alt="Screen Shot 2022-08-31 at 11 44 15 PM" src="https://user-images.githubusercontent.com/63268317/200211457-95131fd1-53a1-4564-b254-dad1cba13acd.png">
 
 
-
+Run: npm run dev or yarn dev or pnpm dev to start the development server on http://localhost:3000
 
