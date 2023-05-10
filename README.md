@@ -4,7 +4,7 @@ Spirofy allows you to visualize your spotify playlists as hypotrochoids and epit
 
 <img width="579" alt="Screen Shot 2022-09-02 at 10 41 56 PM" src="https://user-images.githubusercontent.com/63268317/200211437-21bb665e-e074-4e05-a6c1-098e72717955.png">
 
-The code averages every song data in a playlist, and converts it to a number that can be rendered in the sprograph visualizer I created. 
+The code averages every song data in a playlist, and converts it to a number that can be rendered in the spirograph visualizer I created. 
 
 You can also compare your playlist with an average Spotify Playlist via graphs. 
 
